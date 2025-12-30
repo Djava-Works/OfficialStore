@@ -35,7 +35,7 @@
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         .nav-wrapper { display: flex; justify-content: space-between; align-items: center; }
         
-        .logo { font-size: 1.5rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+        .logo { font-size: 1.5rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; }
         .logo span { color: var(--accent); }
         
         .nav-menu { display: flex; gap: 30px; }
@@ -44,59 +44,124 @@
         
         .mobile-toggle { display: none; font-size: 1.5rem; cursor: pointer; }
 
-        /* --- 3. PAGE SECTIONS (LOGIC) --- */
-        .page-section { display: none; padding: 40px 0; animation: fadeIn 0.4s ease; }
+        /* --- 3. SLIDER BANNER (Fitur Baru) --- */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 400px; /* Tinggi Banner */
+            overflow: hidden;
+            margin-bottom: 40px;
+            border-radius: var(--radius);
+        }
+
+        .slider-track {
+            display: flex;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.8); /* Agar teks lebih terbaca */
+        }
+
+        .slide-content {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            width: 80%;
+        }
+
+        .slide-content h2 { font-size: 3rem; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        .slide-content p { font-size: 1.2rem; margin-bottom: 20px; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%; transform: translateY(-50%);
+            background: rgba(255,255,255,0.7);
+            border: none; padding: 10px 15px;
+            cursor: pointer; font-size: 1.5rem;
+            border-radius: 50%;
+            z-index: 10;
+        }
+        .prev-btn { left: 20px; }
+        .next-btn { right: 20px; }
+
+        /* --- 4. PAGE SECTIONS --- */
+        .page-section { display: none; padding: 20px 0; animation: fadeIn 0.4s ease; }
         .page-section.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* --- 4. HERO BERANDA --- */
-        .hero-banner {
-            height: 400px;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://picsum.photos/seed/fashion/1200/600');
-            background-size: cover; background-position: center;
-            border-radius: var(--radius);
-            display: flex; align-items: center; justify-content: center;
-            text-align: center; color: white; margin-bottom: 40px;
-        }
-        .hero-banner h1 { font-size: 3rem; margin-bottom: 15px; }
-        .btn { padding: 12px 30px; background: var(--accent); color: white; border-radius: 4px; font-weight: 600; display: inline-block; cursor: pointer; border: none; }
-        .btn:hover { background: #bfa030; }
+        .section-title { font-size: 1.8rem; margin-bottom: 30px; border-left: 5px solid var(--accent); padding-left: 15px; }
 
         /* --- 5. PRODUCT GRID (LISTING) --- */
-        .section-title { font-size: 1.8rem; margin-bottom: 30px; border-left: 5px solid var(--accent); padding-left: 15px; }
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 30px; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
         
         .product-card {
             border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden;
             transition: 0.3s; cursor: pointer; background: white;
+            height: 100%; display: flex; flex-direction: column;
         }
         .product-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
         
-        .p-img-wrap { height: 280px; overflow: hidden; position: relative; }
+        .p-img-wrap { height: 250px; overflow: hidden; position: relative; }
         .p-img-wrap img { height: 100%; transition: 0.5s; }
         .product-card:hover .p-img-wrap img { transform: scale(1.05); }
         
-        .p-info { padding: 20px; }
-        .p-cat { font-size: 0.75rem; color: var(--text-gray); text-transform: uppercase; letter-spacing: 1px; }
-        .p-title { font-size: 1.1rem; font-weight: 600; margin: 5px 0 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .p-info { padding: 15px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+        .p-cat { font-size: 0.7rem; color: var(--text-gray); text-transform: uppercase; }
+        .p-title { font-size: 1rem; font-weight: 600; margin: 5px 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
         .p-price { color: var(--accent); font-weight: 700; font-size: 1.1rem; }
-        .btn-view { display: block; margin-top: 15px; text-align: center; border: 1px solid var(--primary); padding: 8px; font-size: 0.9rem; border-radius: 4px; }
-        .btn-view:hover { background: var(--primary); color: white; }
+        .btn-view { display: block; margin-top: 10px; text-align: center; border: 1px solid var(--primary); padding: 5px; font-size: 0.8rem; border-radius: 4px; }
 
-        /* --- 6. PRODUCT DETAIL PAGE (NEW LOGIC) --- */
-        .detail-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; margin-bottom: 60px; }
+        /* --- 6. PRODUCT DETAIL PAGE (GALERI SLIDER) --- */
+        .detail-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 60px; }
         
-        .detail-gallery { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); }
-        .detail-content h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        /* Galeri Kiri */
+        .detail-gallery { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+        .main-image-container { height: 450px; width: 100%; overflow: hidden; }
+        .main-image-container img { width: 100%; height: 100%; object-fit: cover; transition: 0.3s; }
+        
+        /* Thumbnail Slider Bar */
+        .thumbnail-slider {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+            overflow-x: auto;
+            padding-bottom: 5px;
+        }
+        .thumb {
+            width: 80px; height: 80px;
+            flex-shrink: 0;
+            border: 2px solid transparent;
+            cursor: pointer;
+            opacity: 0.6;
+            border-radius: 4px;
+        }
+        .thumb:hover, .thumb.active { border-color: var(--accent); opacity: 1; }
+        .thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Info Kanan */
+        .detail-content h1 { font-size: 2rem; margin-bottom: 10px; }
         .detail-price { font-size: 1.8rem; color: var(--accent); font-weight: 700; margin-bottom: 20px; }
-        .detail-desc { color: var(--text-gray); margin-bottom: 30px; line-height: 1.8; }
+        .detail-desc { color: var(--text-gray); margin-bottom: 30px; font-size: 0.95rem; }
         
         .detail-meta { margin-bottom: 30px; background: var(--secondary); padding: 20px; border-radius: var(--radius); }
-        .meta-item { display: flex; margin-bottom: 10px; }
+        .meta-item { display: flex; margin-bottom: 10px; font-size: 0.9rem; }
         .meta-label { width: 120px; font-weight: 600; }
         
         .action-buttons { display: flex; gap: 15px; }
-        .btn-wa { flex: 1; background: #25D366; color: white; text-align: center; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .btn-wa { flex: 1; background: #25D366; color: white; text-align: center; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 15px; font-weight: 600; border-radius: 4px; }
         .btn-wa:hover { background: #1ebc57; }
         
         .btn-back { margin-bottom: 20px; display: inline-flex; align-items: center; gap: 5px; color: var(--text-gray); cursor: pointer; }
@@ -104,14 +169,14 @@
 
         /* Related Products */
         .related-section { border-top: 1px solid var(--border); padding-top: 50px; }
-        .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; margin-top: 20px; }
+        .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 20px; margin-top: 20px; }
 
         /* --- 7. SIDEBAR & RESPONSIVE --- */
-        .shop-layout { display: grid; grid-template-columns: 250px 1fr; gap: 40px; }
+        .shop-layout { display: grid; grid-template-columns: 250px 1fr; gap: 30px; }
         .sidebar { background: var(--secondary); padding: 20px; height: fit-content; border-radius: var(--radius); }
         .sidebar h3 { margin-bottom: 15px; font-size: 1.1rem; border-bottom: 2px solid var(--accent); padding-bottom: 5px; }
-        .sidebar ul li { margin-bottom: 10px; }
-        .sidebar a { display: block; padding: 8px; border-radius: 4px; }
+        .sidebar ul li { margin-bottom: 5px; }
+        .sidebar a { display: block; padding: 8px 10px; border-radius: 4px; font-size: 0.9rem; }
         .sidebar a:hover, .sidebar a.active-cat { background: white; color: var(--accent); font-weight: 600; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
 
         @media (max-width: 768px) {
@@ -119,9 +184,11 @@
             .nav-menu.show { display: flex; }
             .mobile-toggle { display: block; }
             .shop-layout { grid-template-columns: 1fr; }
-            .sidebar ul { display: flex; overflow-x: auto; gap: 10px; padding-bottom: 10px; }
+            .sidebar ul { display: flex; overflow-x: auto; gap: 10px; padding-bottom: 10px; white-space: nowrap; }
             .detail-wrapper { grid-template-columns: 1fr; }
-            .hero-banner h1 { font-size: 2rem; }
+            .main-image-container { height: 350px; }
+            .slider-container { height: 250px; }
+            .slide-content h2 { font-size: 1.8rem; }
         }
     </style>
 </head>
@@ -145,71 +212,127 @@
 
         <!-- 1. HALAMAN BERANDA -->
         <section id="home" class="page-section active">
-            <div class="hero-banner">
-                <div>
-                    <h1>Koleksi Eksklusif Djava Works</h1>
-                    <p>Temukan gaya terbaikmu dengan kualitas premium.</p>
-                    <br>
-                    <button class="btn" onclick="navigateTo('shop')">Belanja Sekarang</button>
+            <!-- Slider Banner Home -->
+            <div class="slider-container" id="home-slider">
+                <div class="slider-track">
+                    <!-- Slide 1 -->
+                    <div class="slide">
+                        <img src="https://picsum.photos/seed/fashion_hero1/1200/600" alt="Slide 1">
+                        <div class="slide-content">
+                            <h2>Koleksi Terbaru 2024</h2>
+                            <p>Gaya Masa Kini untuk Pria dan Wanita</p>
+                            <button class="btn" style="background:var(--accent)" onclick="navigateTo('shop')">Belanja Sekarang</button>
+                        </div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="slide">
+                        <img src="https://picsum.photos/seed/gym_promo/1200/600" alt="Slide 2">
+                        <div class="slide-content">
+                            <h2>Promo Sportswear</h2>
+                            <p>Diskon 20% Semua Kaos Gym</p>
+                            <button class="btn" style="background:var(--accent)" onclick="filterShop('baju-olahraga')">Lihat Koleksi</button>
+                        </div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="slide">
+                        <img src="https://picsum.photos/seed/jersey_kids/1200/600" alt="Slide 3">
+                        <div class="slide-content">
+                            <h2>Jersey Anak Keren</h2>
+                            <p>Jadikan Si Kecil Terlihat Juara</p>
+                            <button class="btn" style="background:var(--accent)" onclick="filterShop('jersey-anak')">Cek Sekarang</button>
+                        </div>
+                    </div>
                 </div>
+                <button class="slider-btn prev-btn" onclick="moveSlider('home-slider', -1)">&#10094;</button>
+                <button class="slider-btn next-btn" onclick="moveSlider('home-slider', 1)">&#10095;</button>
             </div>
 
             <h2 class="section-title">Produk Terbaru</h2>
-            <!-- Grid produk akan di-generate oleh JavaScript -->
             <div class="product-grid" id="home-products"></div>
         </section>
 
-        <!-- 2. HALAMAN TOKO (Dengan Sidebar) -->
+        <!-- 2. HALAMAN TOKO -->
         <section id="shop" class="page-section">
+             <!-- Slider Banner Shop -->
+             <div class="slider-container" id="shop-slider" style="height: 200px;">
+                <div class="slider-track">
+                    <div class="slide">
+                        <img src="https://picsum.photos/seed/sale1/1200/400" alt="Promo">
+                        <div class="slide-content">
+                            <h2>Flash Sale!</h2>
+                            <p>Produk Pilihan Terbaik</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="https://picsum.photos/seed/sale2/1200/400" alt="Promo">
+                        <div class="slide-content">
+                            <h2>Baju Wanita</h2>
+                            <p>Model Modern dan Syari</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="shop-layout">
-                <!-- Sidebar -->
+                <!-- Sidebar Kategori Lengkap -->
                 <aside class="sidebar">
-                    <h3>Kategori</h3>
+                    <h3>Kategori Produk</h3>
                     <ul>
                         <li><a onclick="filterShop('all')" class="active-cat">Semua Produk</a></li>
-                        <li><a onclick="filterShop('gym')">Kaos Gym</a></li>
-                        <li><a onclick="filterShop('casual')">Kaos Casual</a></li>
-                        <li><a onclick="filterShop('jaket')">Jaket & Hoodie</a></li>
+                        <li><a onclick="filterShop('kaos-cotton')">Kaos Cotton Premium</a></li>
+                        <li><a onclick="filterShop('baju-olahraga')">Baju Olahraga (Sport)</a></li>
+                        <li><a onclick="filterShop('aksesoris')">Aksesoris</a></li>
+                        <li><a onclick="filterShop('celana-olahraga')">Celana Olahraga</a></li>
+                        <li><a onclick="filterShop('jersey-bola')">Jersey Bola</a></li>
+                        <li><a onclick="filterShop('jersey-anak')">Jersey Anak</a></li>
+                        <li><a onclick="filterShop('baju-wanita')">Baju Wanita</a></li>
+                        <li><a onclick="filterShop('anak-anak')">Anak-anak</a></li>
+                        <li><a onclick="filterShop('pria')">Pria Dewasa</a></li>
                     </ul>
                 </aside>
                 
                 <!-- Produk List -->
                 <div>
-                    <h2 class="section-title">Katalog Lengkap</h2>
+                    <h2 class="section-title" id="shop-title">Katalog Lengkap</h2>
                     <div class="product-grid" id="shop-products"></div>
                 </div>
             </div>
         </section>
 
-        <!-- 3. HALAMAN DETAIL PRODUK (Dinamis) -->
+        <!-- 3. HALAMAN DETAIL PRODUK (GALERI SLIDER) -->
         <section id="product-detail" class="page-section">
             <div class="btn-back" onclick="navigateTo('shop')">← Kembali ke Toko</div>
             
             <div class="detail-wrapper">
-                <!-- Kolom Kiri: Gambar -->
+                <!-- KIRI: Galeri Slider -->
                 <div class="detail-gallery">
-                    <img id="detail-img" src="" alt="Detail Product">
+                    <!-- Gambar Utama -->
+                    <div class="main-image-container">
+                        <img id="detail-main-img" src="" alt="Detail Product">
+                    </div>
+                    <!-- Baris Thumbnail (Slider Bar) -->
+                    <div class="thumbnail-slider" id="detail-thumbs">
+                        <!-- JS akan mengisi ini dengan 4 gambar -->
+                    </div>
                 </div>
 
-                <!-- Kolom Kanan: Info -->
+                <!-- KANAN: Info Produk -->
                 <div class="detail-content">
-                    <span id="detail-cat" class="p-cat" style="font-size: 0.9rem; margin-bottom: 5px;">Category</span>
+                    <span id="detail-cat" class="p-cat" style="font-size: 0.9rem;">Category</span>
                     <h1 id="detail-name">Nama Produk</h1>
                     <div class="detail-price" id="detail-price">Rp 0</div>
                     
                     <div class="detail-meta">
-                        <div class="meta-item"><span class="meta-label">Stok:</span> <span>Tersedia</span></div>
-                        <div class="meta-item"><span class="meta-label">Bahan:</span> <span>Cotton Combed 30s</span></div>
-                        <div class="meta-item"><span class="meta-label">Berat:</span> <span>250 Gram</span></div>
+                        <div class="meta-item"><span class="meta-label">Stok:</span> <span>Terbatas</span></div>
+                        <div class="meta-item"><span class="meta-label">Bahan:</span> <span id="detail-material">-</span></div>
+                        <div class="meta-item"><span class="meta-label">Berat:</span> <span id="detail-weight">-</span></div>
                     </div>
 
-                    <p class="detail-desc" id="detail-desc">
-                        Deskripsi produk akan muncul di sini...
-                    </p>
+                    <p class="detail-desc" id="detail-desc">Deskripsi...</p>
 
                     <div class="action-buttons">
-                        <a id="detail-wa-link" href="#" target="_blank" class="btn btn-wa">
-                            <span>Beli via WhatsApp</span>
+                        <a id="detail-wa-link" href="#" target="_blank" class="btn-wa">
+                            <span>Beli Sekarang via WA</span>
                         </a>
                     </div>
                 </div>
@@ -217,25 +340,44 @@
 
             <!-- Bagian: Produk Lain (Related) -->
             <div class="related-section">
-                <h2 class="section-title">Produk Lainnya</h2>
-                <div class="related-grid" id="related-products">
-                    <!-- JS akan mengisi ini -->
-                </div>
+                <h2 class="section-title">Produk Lainnya yang Mungkin Kamu Suka</h2>
+                <div class="related-grid" id="related-products"></div>
             </div>
         </section>
 
         <!-- 4. HALAMAN TENTANG -->
         <section id="about" class="page-section">
-            <h2 class="section-title">Tentang Djava Works</h2>
-            <p style="max-width: 800px; color: #666;">
-                Djava Works adalah brand lokal yang berkomitmen menghadirkan fashion berkualitas dengan desain modern. Kami percaya bahwa gaya tidak harus mahal, namun tetap harus terlihat profesional dan elegan.
-            </p>
+             <!-- Slider Banner About -->
+             <div class="slider-container" id="about-slider" style="height: 300px;">
+                <div class="slider-track">
+                    <div class="slide">
+                        <img src="https://picsum.photos/seed/team1/1200/500" alt="Team">
+                        <div class="slide-content">
+                            <h2>Tentang Djava Works</h2>
+                            <p>Kami Memulai dari Garasi Kecil</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="https://picsum.photos/seed/team2/1200/500" alt="Production">
+                        <div class="slide-content">
+                            <h2>Produksi Berkualitas</h2>
+                            <p>Jahitan Kuat dan Bahan Nyaman</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="section-title">Profil Perusahaan</h2>
+            <div style="max-width: 800px; color: #555;">
+                <p style="margin-bottom: 20px;">Djava Works berdiri dengan visi menyediakan pakaian berkualitas tinggi untuk seluruh keluarga. Mulai dari jersey bola untuk anak, kaos gym untuk atlet, hingga pakaian kasual untuk sehari-hari.</p>
+                <p>Kami mengutamakan kepuasan pelanggan dengan pembayaran yang mudah via WhatsApp dan pengiriman ke seluruh Indonesia.</p>
+            </div>
         </section>
 
         <!-- 5. HALAMAN KONTAK -->
         <section id="contact" class="page-section">
             <h2 class="section-title">Hubungi Kami</h2>
-            <p>Ada pertanyaan? Hubungi kami melalui WhatsApp:</p>
+            <p>Ada pertanyaan tentang stok jersey atau ukuran baju? Hubungi kami melalui WhatsApp:</p>
             <br>
             <a href="https://wa.me/6281234567890" class="btn btn-wa" style="display: inline-flex; width: auto;">Chat WhatsApp Admin</a>
         </section>
@@ -245,81 +387,140 @@
     <footer style="background: #111; color: white; padding: 40px 0; margin-top: 60px; text-align: center;">
         <div class="container">
             <div class="logo" style="margin-bottom: 20px;">Djava <span>Works</span></div>
-            <p style="color: #666; font-size: 0.8rem;">&copy; 2023 Djava Works. Website Toko Online Modern.</p>
+            <p style="color: #666; font-size: 0.8rem;">&copy; 2024 Djava Works. Toko Online Terlengkap.</p>
         </div>
     </footer>
 
-    <!-- JAVASCRIPT LOGIC (DATABASE & NAVIGATION) -->
+    <!-- JAVASCRIPT LOGIC (DATABASE & SLIDER) -->
     <script>
-        // --- 1. DATABASE PRODUK ---
-        // Kamu bisa menambah produk di sini
+        // --- 1. DATABASE PRODUK (LENGKAP) ---
+        // Setiap produk sekarang punya 'images' (Array 4 gambar) untuk galeri
         const productsDB = [
             {
                 id: 1,
-                name: "Kaos Gym Dryfit Pro",
-                category: "gym",
-                price: 99000,
-                image: "https://picsum.photos/seed/gym_pro/500/500",
-                desc: "Kaos gym dengan bahan dryfit premium yang menyerap keringat dengan cepat. Desain fitted untuk memperlihatkan otot tubuh saat berolahraga. Sangat cocok untuk fitness, lari, dan olahraga lainnya."
+                name: "Kaos Cotton Premium Hitam",
+                category: "kaos-cotton",
+                material: "Cotton Combed 30s",
+                weight: "250 Gram",
+                price: 85000,
+                // Menggunakan seed berbeda untuk simulasi 4 foto berbeda (tampak depan, samping, belakang, detail)
+                images: [
+                    "https://picsum.photos/seed/cotton1_front/600/600",
+                    "https://picsum.photos/seed/cotton1_side/600/600",
+                    "https://picsum.photos/seed/cotton1_back/600/600",
+                    "https://picsum.photos/seed/cotton1_detail/600/600"
+                ],
+                desc: "Kaos cotton combed 30s premium dengan bahan adem, menyerap keringat, dan anti bakteri. Potongan standar (regular fit) cocok untuk pria dan wanita. Jahitan rantai pada bagian leher memastikan kerah tidak kendor."
             },
             {
                 id: 2,
-                name: "Kaos Gym Compression V2",
-                category: "gym",
-                price: 115000,
-                image: "https://picsum.photos/seed/gym_comp/500/500",
-                desc: "Edisi V2 dengan bahan lebih elastis. Teknologi anti-bakteri menjaga bau badan tetap segar. Potongan kompresi meningkatkan sirkulasi darah saat latihan beban."
+                name: "Jersey Bola Grade Ori - Real Madrid",
+                category: "jersey-bola",
+                material: "Polyester Dryfit",
+                weight: "200 Gram",
+                price: 120000,
+                images: [
+                    "https://picsum.photos/seed/jersey_rmd_front/600/600",
+                    "https://picsum.photos/seed/jersey_rmd_side/600/600",
+                    "https://picsum.photos/seed/jersey_rmd_back/600/600",
+                    "https://picsum.photos/seed/jersey_rmd_tag/600/600"
+                ],
+                desc: "Jersey bola grade original high quality. Bahan dryfit premium yang dingin dan tidak panas. Sablon polyflex plastisol yang awet dan tidak pecah. Tersedia ukuran S hingga XXL."
             },
             {
                 id: 3,
-                name: "Kaos Oversized Black",
-                category: "casual",
-                price: 85000,
-                image: "https://picsum.photos/seed/casual_black/500/500",
-                desc: "Kaos casual dengan potongan oversized (longgar) yang sedang tren. Bahan Cotton Combed 30s yang adem dan tidak panas. Cocok untuk hangout atau sehari-hari."
+                name: "Kaos Gym Compression Pro",
+                category: "baju-olahraga",
+                material: "Spandex Lycra",
+                weight: "180 Gram",
+                price: 95000,
+                images: [
+                    "https://picsum.photos/seed/gym_comp_front/600/600",
+                    "https://picsum.photos/seed/gym_comp_side/600/600",
+                    "https://picsum.photos/seed/gym_comp_back/600/600",
+                    "https://picsum.photos/seed/gym_comp_detail/600/600"
+                ],
+                desc: "Kaos gym dengan efek kompresi untuk sirkulasi darah yang lebih baik saat fitness. Bahan sangat elastis (stretch) mengikuti bentuk tubuh. Anti bau dan cepat kering."
             },
             {
                 id: 4,
-                name: "Hoodie Jumper Navy",
-                category: "jaket",
-                price: 185000,
-                image: "https://picsum.photos/seed/hoodie_navy/500/500",
-                desc: "Hoodie bahan fleece cotton tebal tapi tidak gerah. Dilengkapi tali serut dan kantong depan kangaroo. Warna navy yang elegan dan mudah dipadukan dengan celana apapun."
+                name: "Celana Jogger Sport",
+                category: "celana-olahraga",
+                material: "Terry Cotton",
+                weight: "350 Gram",
+                price: 110000,
+                images: [
+                    "https://picsum.photos/seed/jogger_front/600/600",
+                    "https://picsum.photos/seed/jogger_side/600/600",
+                    "https://picsum.photos/seed/jogger_back/600/600",
+                    "https://picsum.photos/seed/jogger_detail/600/600"
+                ],
+                desc: "Celana jogger untuk olahraga santai maupun gym. Memiliki kantong di kanan kiri dan tali serut di pinggang. Bahan terry cotton yang tebal tapi tetap sejuk."
             },
             {
                 id: 5,
-                name: "Jaket Bomber Pilot",
-                category: "jaket",
-                price: 210000,
-                image: "https://picsum.photos/seed/bomber/500/500",
-                desc: "Jaket bomber style dengan detail zipper yang rapi. Bahan waterproof ringan, cocok untuk dipakai saat malam hari atau cuaca dingin sedang."
+                name: "Jersey Anak Klub Inggris",
+                category: "jersey-anak",
+                material: "Hyget Soft",
+                weight: "150 Gram",
+                price: 75000,
+                images: [
+                    "https://picsum.photos/seed/kids_front/600/600",
+                    "https://picsum.photos/seed/kids_side/600/600",
+                    "https://picsum.photos/seed/kids_back/600/600",
+                    "https://picsum.photos/seed/kids_detail/600/600"
+                ],
+                desc: "Jersey bola ukuran anak-anak (Age 4-10). Bahan hyget yang lembut dan tidak gatal. Motif sablon yang menarik membuat anak-anak suka memakainya untuk bermain bola."
             },
             {
                 id: 6,
-                name: "Kaos Polos White Premium",
-                category: "casual",
-                price: 79000,
-                image: "https://picsum.photos/seed/casual_white/500/500",
-                desc: "Kaos polos warna putih bersih. Menggunakan bahan bamboo cotton yang lebih lembut dari katun biasa. Anti bakteri dan menyehatkan kulit."
+                name: "Kemeja Wanita Casual",
+                category: "baju-wanita",
+                material: "Rayon Premium",
+                weight: "200 Gram",
+                price: 105000,
+                images: [
+                    "https://picsum.photos/seed/women_front/600/600",
+                    "https://picsum.photos/seed/women_side/600/600",
+                    "https://picsum.photos/seed/women_back/600/600",
+                    "https://picsum.photos/seed/women_detail/600/600"
+                ],
+                desc: "Kemeja casual wanita dengan motif modern. Potongan longgar yang nyaman dipakai seharian. Cocok dipadukan dengan celana jeans maupun rok."
+            },
+            {
+                id: 7,
+                name: "Topi Snapback Djava",
+                category: "aksesoris",
+                material: "Canvas Drill",
+                weight: "100 Gram",
+                price: 45000,
+                images: [
+                    "https://picsum.photos/seed/cap_front/600/600",
+                    "https://picsum.photos/seed/cap_side/600/600",
+                    "https://picsum.photos/seed/cap_back/600/600",
+                    "https://picsum.photos/seed/cap_detail/600/600"
+                ],
+                desc: "Topi snapback berkualitas tinggi. Bagian belakang bisa disesuaikan ukurannya. Cocok untuk melengkapi gaya casual atau sporty."
             }
         ];
 
         // --- 2. FUNGSI RENDER PRODUK ---
         function renderProducts(containerId, filterCategory = 'all') {
             const container = document.getElementById(containerId);
-            container.innerHTML = ''; // Kosongkan container
+            container.innerHTML = ''; 
 
             productsDB.forEach(product => {
-                // Filter logic
                 if(filterCategory !== 'all' && product.category !== filterCategory) return;
 
-                // Create Card HTML
                 const card = document.createElement('div');
                 card.className = 'product-card';
-                card.onclick = () => openProductDetail(product.id); // Klik card masuk detail
+                card.onclick = () => openProductDetail(product.id); 
+                // Ambil gambar pertama sebagai thumbnail
+                const thumbImg = product.images[0]; 
+                
                 card.innerHTML = `
                     <div class="p-img-wrap">
-                        <img src="${product.image}" alt="${product.name}">
+                        <img src="${thumbImg}" alt="${product.name}">
                     </div>
                     <div class="p-info">
                         <div class="p-cat">${product.category}</div>
@@ -332,66 +533,135 @@
             });
         }
 
-        // --- 3. FUNGSI BUKA HALAMAN DETAIL ---
+        // --- 3. FUNGSI BUKA HALAMAN DETAIL (Dengan Galeri) ---
         function openProductDetail(id) {
             const product = productsDB.find(p => p.id === id);
             if (!product) return;
 
-            // Isi data ke elemen HTML detail
-            document.getElementById('detail-img').src = product.image;
+            // Isi Data
             document.getElementById('detail-name').innerText = product.name;
             document.getElementById('detail-cat').innerText = product.category;
             document.getElementById('detail-price').innerText = 'Rp ' + product.price.toLocaleString('id-ID');
             document.getElementById('detail-desc').innerText = product.desc;
+            document.getElementById('detail-material').innerText = product.material;
+            document.getElementById('detail-weight').innerText = product.weight;
             
             // Set Link WA
             const waMessage = `Halo Djava Works, saya tertarik membeli ${product.name} seharga Rp ${product.price.toLocaleString('id-ID')}`;
             document.getElementById('detail-wa-link').href = `https://wa.me/6281234567890?text=${encodeURIComponent(waMessage)}`;
 
-            // Render Produk Lain (Related Products)
+            // --- LOGIKA GALERI SLIDER (MAIN IMAGE + THUMBNAILS) ---
+            const mainImg = document.getElementById('detail-main-img');
+            const thumbsContainer = document.getElementById('detail-thumbs');
+            
+            // Set gambar utama awal
+            mainImg.src = product.images[0];
+            thumbsContainer.innerHTML = ''; // Reset thumbs
+
+            // Loop 4 gambar dan buat thumbnail
+            product.images.forEach((imgSrc, index) => {
+                const thumbDiv = document.createElement('div');
+                thumbDiv.className = `thumb ${index === 0 ? 'active' : ''}`; // Set thumb pertama aktif
+                
+                thumbDiv.innerHTML = `<img src="${imgSrc}">`;
+                
+                // Event Listener: Klik thumbnail ganti gambar utama
+                thumbDiv.onclick = function() {
+                    // Ganti Gambar Utama
+                    mainImg.src = imgSrc;
+                    
+                    // Update class active di thumbnail
+                    document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                };
+                
+                thumbsContainer.appendChild(thumbDiv);
+            });
+
+            // Render Produk Lain (Related)
             const relatedContainer = document.getElementById('related-products');
             relatedContainer.innerHTML = '';
             
             productsDB.forEach(p => {
-                if(p.id !== id) { // Jangan tampilkan produk yang sedang dilihat
+                if(p.id !== id) {
                     const relatedCard = document.createElement('div');
                     relatedCard.className = 'product-card';
-                    relatedCard.onclick = () => openProductDetail(p.id); // Link ke detail produk lain
+                    relatedCard.onclick = () => openProductDetail(p.id); 
                     relatedCard.innerHTML = `
-                         <div class="p-img-wrap" style="height: 200px;">
-                            <img src="${p.image}" alt="${p.name}">
+                         <div class="p-img-wrap" style="height: 180px;">
+                            <img src="${p.images[0]}" alt="${p.name}">
                         </div>
                         <div class="p-info">
-                            <h3 class="p-title" style="font-size: 1rem;">${p.name}</h3>
-                            <div class="p-price" style="font-size: 0.95rem;">Rp ${p.price.toLocaleString('id-ID')}</div>
+                            <h3 class="p-title" style="font-size: 0.9rem;">${p.name}</h3>
+                            <div class="p-price" style="font-size: 0.9rem;">Rp ${p.price.toLocaleString('id-ID')}</div>
                         </div>
                     `;
                     relatedContainer.appendChild(relatedCard);
                 }
             });
 
-            // Pindah ke section detail
             navigateTo('product-detail');
         }
 
-        // --- 4. NAVIGASI HALAMAN ---
+        // --- 4. SLIDER LOGIC (BANNER OTOMATIS) ---
+        let sliderIntervals = {};
+
+        function moveSlider(sliderId, direction) {
+            const slider = document.getElementById(sliderId);
+            const track = slider.querySelector('.slider-track');
+            const slides = track.children;
+            const slideWidth = slides[0].clientWidth;
+            let currentIndex = parseInt(track.getAttribute('data-index') || 0);
+
+            currentIndex += direction;
+
+            // Loop Logic
+            if (currentIndex < 0) currentIndex = slides.length - 1;
+            if (currentIndex >= slides.length) currentIndex = 0;
+
+            track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+            track.setAttribute('data-index', currentIndex);
+        }
+
+        function startAutoSlide(sliderId) {
+            if (sliderIntervals[sliderId]) clearInterval(sliderIntervals[sliderId]);
+            sliderIntervals[sliderId] = setInterval(() => {
+                moveSlider(sliderId, 1);
+            }, 4000); // Ganti slide setiap 4 detik
+        }
+
+        // --- 5. NAVIGASI & FILTER ---
         function navigateTo(pageId) {
-            // Hide all sections
             document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
-            
-            // Show target section
             document.getElementById(pageId).classList.add('active');
-
-            // Scroll to top
             window.scrollTo(0, 0);
-
-            // Close mobile menu if open
             document.getElementById('navMenu').classList.remove('show');
+
+            // Start slider only when page is active
+            if(pageId === 'home') startAutoSlide('home-slider');
+            if(pageId === 'shop') startAutoSlide('shop-slider');
+            if(pageId === 'about') startAutoSlide('about-slider');
         }
 
         function filterShop(category) {
+            // Update Title
+            const titles = {
+                'all': 'Katalog Lengkap',
+                'kaos-cotton': 'Koleksi Kaos Cotton',
+                'baju-olahraga': 'Baju Olahraga',
+                'aksesoris': 'Aksesoris Fashion',
+                'celana-olahraga': 'Celana & Jogger',
+                'jersey-bola': 'Jersey Bola Grade Ori',
+                'jersey-anak': 'Jersey Anak-Anak',
+                'baju-wanita': 'Fashion Wanita',
+                'anak-anak': 'Anak-Anak',
+                'pria': 'Pria Dewasa'
+            };
+            document.getElementById('shop-title').innerText = titles[category] || 'Produk';
+
             renderProducts('shop-products', category);
-            // Update sidebar active state
+            
+            // Update Sidebar UI
             document.querySelectorAll('.sidebar a').forEach(a => a.classList.remove('active-cat'));
             event.target.classList.add('active-cat');
         }
@@ -400,10 +670,10 @@
             document.getElementById('navMenu').classList.toggle('show');
         }
 
-        // --- 5. INITIALIZE ---
-        // Jalankan saat web dibuka
-        renderProducts('home-products', 'all'); // Render home
-        renderProducts('shop-products', 'all'); // Render shop
+        // --- 6. INITIALIZE ---
+        renderProducts('home-products', 'all'); 
+        renderProducts('shop-products', 'all');
+        startAutoSlide('home-slider'); // Jalankan slider home saat load
 
     </script>
 </body>
