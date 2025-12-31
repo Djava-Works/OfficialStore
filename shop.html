@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="id-ID">
+
+<head>
+  <title>Djava Works - Toko</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="author" content="Djava Works" />
+  <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.gstatic.com/">
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/plugins/swiper.min.css" type="text/css" />
+  <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
+  <link rel="stylesheet" href="assets/css/custom.css" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body class="gradient-bg">
+  <svg class="d-none">
+    <!-- Masukkan kode SVG yang sama seperti di index.html -->
+    <symbol id="icon_nav" viewBox="0 0 25 18">
+      <rect width="25" height="2" />
+      <rect y="8" width="20" height="2" />
+      <rect y="16" width="25" height="2" />
+    </symbol>
+    <!-- ...symbol lainnya... -->
+  </svg>
+
+  <style>
+    #header { padding-top: 8px; padding-bottom: 8px; }
+    .logo__image { max-width: 220px; }
+    .product-card { cursor: pointer; }
+  </style>
+
+  <!-- HEADER MOBILE -->
+  <div class="header-mobile header_sticky">
+    <div class="container d-flex align-items-center h-100">
+      <a class="mobile-nav-activator d-block position-relative" href="#">
+        <svg class="nav-icon" width="25" height="18"><use href="#icon_nav"/></svg>
+      </a>
+      <div class="logo">
+        <a href="index.html"><img src="assets/images/logo.png" alt="Djava Works" class="logo__image d-block" /></a>
+      </div>
+      <a href="shop.html" class="header-tools__item header-tools__cart js-open-aside">
+        <svg class="d-block" width="20" height="20"><use href="#icon_cart"/></svg>
+      </a>
+    </div>
+    <nav class="header-mobile__navigation navigation d-flex flex-column w-100 position-absolute top-100 bg-body overflow-auto">
+      <div class="container">
+        <ul class="navigation__list list-unstyled position-relative">
+          <li class="navigation__item"><a href="index.html" class="navigation__link">Beranda</a></li>
+          <li class="navigation__item"><a href="shop.html" class="navigation__link">Toko</a></li>
+          <li class="navigation__item"><a href="contact.html" class="navigation__link">Kontak</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <!-- HEADER DESKTOP -->
+  <header id="header" class="header header-fullwidth header-transparent-bg">
+    <div class="container">
+      <div class="header-desk header-desk_type_1">
+        <div class="logo">
+          <a href="index.html"><img src="assets/images/logo.png" alt="Djava Works" class="logo__image d-block" /></a>
+        </div>
+        <nav class="navigation">
+          <ul class="navigation__list list-unstyled d-flex">
+            <li class="navigation__item"><a href="index.html" class="navigation__link">Beranda</a></li>
+            <li class="navigation__item"><a href="shop.html" class="navigation__link active">Toko</a></li>
+            <li class="navigation__item"><a href="contact.html" class="navigation__link">Kontak</a></li>
+          </ul>
+        </nav>
+        <div class="header-tools d-flex align-items-center">
+          <div class="header-tools__item hover-container">
+            <div class="js-hover__open position-relative">
+              <a class="js-search-popup search-field__actor" href="#">
+                <svg class="d-block" width="20" height="20"><use href="#icon_search"/></svg>
+              </a>
+            </div>
+          </div>
+          <a href="shop.html" class="header-tools__item header-tools__cart">
+            <svg class="d-block" width="20" height="20"><use href="#icon_cart"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="pt-90">
+    <section class="shop-main container d-flex pt-4 pt-xl-5">
+      <!-- SIDEBAR FILTER -->
+      <div class="shop-sidebar side-sticky bg-body" id="shopFilter">
+        <div class="aside-header d-flex d-lg-none align-items-center">
+          <h3 class="text-uppercase fs-6 mb-0">Saring Produk</h3>
+        </div>
+        <div class="accordion" id="categories-list">
+          <div class="accordion-item mb-4 pb-3">
+            <h5 class="accordion-header">
+              <button class="accordion-button p-0 border-0 fs-5 text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-filter-1">
+                Kategori Produk
+              </button>
+            </h5>
+            <div id="accordion-filter-1" class="accordion-collapse collapse show border-0">
+              <div class="accordion-body px-0 pb-0 pt-3">
+                <ul class="list list-inline mb-0">
+                  <li class="list-item"><a href="#" class="menu-link py-1">Jaket</a></li>
+                  <li class="list-item"><a href="#" class="menu-link py-1">Celana</a></li>
+                  <li class="list-item"><a href="#" class="menu-link py-1">Kaos</a></li>
+                  <li class="list-item"><a href="#" class="menu-link py-1">Sepatu</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SHOP LIST / GRID -->
+      <div class="shop-list flex-grow-1">
+        <div class="d-flex justify-content-between mb-4 pb-md-2">
+          <div class="breadcrumb mb-0 d-none d-md-block flex-grow-1">
+            <a href="index.html" class="menu-link menu-link_us-s text-uppercase fw-medium">Beranda</a>
+            <span class="breadcrumb-separator menu-link fw-medium ps-1 pe-1">/</span>
+            <a href="shop.html" class="menu-link menu-link_us-s text-uppercase fw-medium">Toko</a>
+          </div>
+          <div class="shop-acs d-flex align-items-center justify-content-between justify-content-md-end flex-grow-1">
+            <select class="shop-acs__select form-select w-auto border-0 py-0 order-1 order-md-0" aria-label="Sort Items">
+              <option selected>Urutan Default</option>
+              <option value="1">Produk Unggulan</option>
+              <option value="2">Harga, Rendah ke Tinggi</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="products-grid row row-cols-2 row-cols-md-3" id="products-grid">
+          <!-- PRODUK 1 -->
+          <div class="product-card-wrapper">
+            <div class="product-card mb-3 mb-md-4 mb-xxl-5" onclick="window.location.href='detail.html'">
+              <div class="pc__img-wrapper">
+                <div class="swiper-container background-img js-swiper-slider">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                      <a href="detail.html"><img loading="lazy" src="assets/images/products/product_1.jpg" width="330" height="400" alt="Produk" class="pc__img"></a>
+                    </div>
+                    <div class="swiper-slide">
+                      <a href="detail.html"><img loading="lazy" src="assets/images/products/product_1-1.jpg" width="330" height="400" alt="Produk" class="pc__img"></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="pc__info position-relative">
+                <p class="pc__category">Olahraga</p>
+                <h6 class="pc__title"><a href="detail.html">Jaket Kulit Sintetis</a></h6>
+                <div class="product-card__price d-flex">
+                  <span class="money price">Rp 450.000</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PRODUK 2 -->
+          <div class="product-card-wrapper">
+            <div class="product-card mb-3 mb-md-4 mb-xxl-5" onclick="window.location.href='detail.html'">
+              <div class="pc__img-wrapper">
+                <div class="swiper-container background-img js-swiper-slider">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                      <a href="detail.html"><img loading="lazy" src="assets/images/products/product_2.jpg" width="330" height="400" alt="Produk" class="pc__img"></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="pc__info position-relative">
+                <p class="pc__category">Olahraga</p>
+                <h6 class="pc__title"><a href="detail.html">Celana Pendek</a></h6>
+                <div class="product-card__price d-flex">
+                  <span class="money price">Rp 250.000</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PRODUK 3 -->
+          <div class="product-card-wrapper">
+            <div class="product-card mb-3 mb-md-4 mb-xxl-5" onclick="window.location.href='detail.html'">
+              <div class="pc__img-wrapper">
+                <div class="swiper-container background-img js-swiper-slider">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                      <a href="detail.html"><img loading="lazy" src="assets/images/products/product_3.jpg" width="330" height="400" alt="Produk" class="pc__img"></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="pc__info position-relative">
+                <p class="pc__category">Olahraga</p>
+                <h6 class="pc__title"><a href="detail.html">Kaos Lari</a></h6>
+                <div class="product-card__price d-flex">
+                  <span class="money price">Rp 120.000</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <hr class="mt-5 text-secondary" />
+  <!-- Footer Sama seperti Index -->
+  <footer class="footer footer_type_2">
+    <div class="footer-bottom">
+      <div class="container d-md-flex align-items-center">
+        <span class="footer-copyright me-auto">©2024 Djava Works. All Rights Reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/plugins/jquery.min.js"></script>
+  <script src="assets/js/plugins/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/plugins/swiper.min.js"></script>
+  <script src="assets/js/theme.js"></script>
+</body>
+</html>
