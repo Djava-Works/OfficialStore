@@ -1,889 +1,272 @@
 <!DOCTYPE html>
-<html lang="id">
+<html dir="ltr" lang="id-ID">
+
 <head>
-  <title>Djava Works | Official Store</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="author" content="Djava Works">
-  
-  <!-- 1. CSS LIBRARIES (Zed-Three Standard) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  
-  <!-- 2. FONTS (Zed-Three Standard) -->
-  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
+  <title>Djava Works - Beranda</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="author" content="Djava Works" />
+  <!-- Pastikan folder assets ada di samping file ini -->
+  <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.gstatic.com/">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Allura&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/plugins/swiper.min.css" type="text/css" />
+  <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
+  <link rel="stylesheet" href="assets/css/custom.css" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body class="gradient-bg">
+  <!-- SVG Symbols (Dipanggil dari assets) -->
+  <svg class="d-none">
+    <!-- ... (Simpan kode SVG asli yang kamu kirim di sini agar ikon tetap muncul) ... -->
+    <!-- Gunakan kode lengkap SVG dari file aslimu agar tidak error -->
+    <symbol id="icon_nav" viewBox="0 0 25 18">
+      <rect width="25" height="2" />
+      <rect y="8" width="20" height="2" />
+      <rect y="16" width="25" height="2" />
+    </symbol>
+    <!-- Sisipkan semua symbol lain dari file asli di sini -->
+  </svg>
 
   <style>
-    /* --- 1. GLOBAL VARIABLES (Zed-Three) --- */
-    :root {
-      --primary: #111;
-      --secondary: #777;
-      --accent: #d4af37; /* Emas Zed-Three */
-      --discount-color: #e74c3c;
-      --bg-body: #fff;
-      --bg-gray: #f4f4f4; /* Warna Sidebar Zed-Three */
-      --radius: 4px;
-      --font-main: 'Jost', sans-serif;
-    }
-
-    body { font-family: var(--font-main); background: var(--bg-body); color: var(--primary); line-height: 1.5; }
-    a { text-decoration: none; color: inherit; transition: 0.3s; }
-    ul { list-style: none; }
-    img { width: 100%; display: block; object-fit: cover; }
-    .container { max-width: 1620px; margin: 0 auto; padding: 0 30px; } /* Container Lebar Zed-Three */
-
-    /* --- 2. HEADER (PERSIS ZED-THREE) --- */
-    .header { border-bottom: 1px solid #e0e0e0; position: sticky; top: 0; z-index: 1000; background: rgba(255,255,255,0.95); }
-    .header-desk { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; }
+    #header { padding-top: 8px; padding-bottom: 8px; }
+    .logo__image { max-width: 220px; }
     
-    .logo { font-size: 1.5rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; }
-    .logo span { color: var(--accent); }
-
-    /* Navigation Menu */
-    .navigation { display: flex; gap: 30px; }
-    .navigation__list { list-style: none; display: flex; gap: 30px; }
-    .navigation__link { font-weight: 500; font-size: 0.95rem; color: #111; text-transform: uppercase; cursor: pointer; }
-    .navigation__link:hover, .navigation__link.active { color: var(--accent); }
-
-    .mobile-toggle { display: none; font-size: 1.5rem; cursor: pointer; }
-
-    /* Header Tools */
-    .header-tools { display: flex; align-items: center; gap: 15px; }
-    .header-tools__item { cursor: pointer; font-size: 20px; color: #111; position: relative; }
-    .header-tools__item:hover { color: var(--accent); }
-    .cart-amount { position: absolute; top: -8px; right: -8px; background: #111; color: #fff; font-size: 10px; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-
-    /* Mobile Menu */
-    .header-mobile { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: #fff; padding: 20px; box-shadow: 0 5px 10px rgba(0,0,0,0.1); z-index: 999; }
-    .header-mobile.show { display: flex; }
-
-    /* --- 3. SLIDESHOW (PERSIS ZED-THREE ANIMATIONS) --- */
-    .slideshow { height: 600px; position: relative; overflow: hidden; margin-bottom: 40px; }
-    .swiper-slide { overflow: hidden; height: 100%; position: relative; }
-    
-    .slideshow-character { position: absolute; bottom: 0; right: 0; width: 500px; z-index: 5; display: flex; justify-content: flex-end; }
-    /* Animasi Fade Up dari Bawah */
-    .animate { animation-duration: 1s; animation-fill-mode: both; }
-    .animate_fade { animation-name: fadeInUp; }
-    .animate_btt { animation-name: fadeInUp_Btt; } /* Bottom to Top */
-    .animate_delay-3 { animation-delay: 0.3s; } .animate_delay-5 { animation-delay: 0.5s; }
-    .animate_delay-7 { animation-delay: 0.7s; } .animate_delay-9 { animation-delay: 0.9s; } .animate_delay-10 { animation-delay: 1s; }
-
-    @keyframes fadeInUp {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeInUp_Btt {
-        from { opacity: 0; transform: translateY(50px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-
-    .slideshow-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; text-align: center; z-index: 10; }
-    .text_dash { text-transform: uppercase; letter-spacing: 2px; color: var(--secondary); font-size: 1rem; display: block; margin-bottom: 10px; }
-    
-    /* Font Sizes Slide */
-    .h1 { font-size: 3.5rem; margin-bottom: 10px; line-height: 1.2; }
-    .fw-normal { font-weight: 300; }
-    .fw-bold { font-weight: 700; }
-
-    /* --- 4. SECTION HEADERS --- */
-    .section-title { 
-        display: flex; justify-content: space-between; align-items: center; 
-        margin: 40px 0 20px; border-left: 5px solid var(--accent); padding-left: 15px; 
-    }
-    .section-title h2 { font-size: 1.8rem; font-weight: 600; margin: 0; text-transform: uppercase; }
-
-    /* --- 5. SIDEBAR (PERSIS ZED-THREE) --- */
-    .sidebar { 
-        background: var(--bg-gray); 
-        padding: 30px; 
-        border-radius: var(--radius); 
-        height: fit-content; 
-        /* Sticky Sidebar (Modern Touch) */
-        position: sticky; top: 100px;
-    }
-    .sidebar-title { font-size: 1.1rem; margin-bottom: 25px; border-bottom: 2px solid var(--accent); padding-bottom: 10px; }
-    .cat-list li { margin-bottom: 12px; }
-    .cat-list a { display: block; font-size: 0.9rem; font-weight: 500; color: var(--primary); transition: 0.3s; }
-    .cat-list a:hover, .cat-list a.active { color: var(--accent); padding-left: 5px; }
-
-    /* --- 6. PRODUCT CARD (MODERN SPORTSWEAR STYLE) --- */
-    .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
-    
-    .product-card_style3 {
-        border: 1px solid transparent; /* Borderless modern look or very light */
-        border-radius: var(--radius);
-        background: white;
-        transition: 0.3s; cursor: pointer;
-        position: relative;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.05); /* Modern Soft Shadow */
-    }
-    .product-card_style3:hover { 
-        transform: translateY(-5px); 
-        box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
-    }
-
-    /* MODERN IMAGE CONTAINER (SQUARE 1:1) */
-    .pc__img-wrapper {
-        position: relative;
-        overflow: hidden;
-        border-radius: var(--radius);
-        background: #f9f9f9;
-        /* Force Square Aspect Ratio */
-        aspect-ratio: 1 / 1; 
-        margin-bottom: 15px;
-    }
-    .pc__img { transition: 0.5s; width: 100%; height: 100%; object-fit: cover; }
-    .product-card_style3:hover .pc__img { transform: scale(1.05); }
-
-    /* Overlay Hover Button */
-    .anim_appear-bottom {
-        position: absolute; bottom: 0; left: 0; right: 0;
-        background: rgba(255,255,255,0.95);
-        backdrop-filter: blur(5px); /* Modern blur */
-        padding: 15px;
-        transform: translateY(100%);
-        transition: 0.3s;
-        display: flex; align-items: center; justify-content: center; gap: 10px;
-    }
-    .product-card_style3:hover .anim_appear-bottom { transform: translateY(0); }
-
-    /* Typography Product */
-    .pc__info { text-align: center; }
-    .pc__cat { font-size: 0.7rem; color: #999; text-transform: uppercase; margin-bottom: 2px; }
-    .pc__title { font-size: 1rem; font-weight: 600; margin-bottom: 5px; line-height: 1.4; height: 40px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
-    
-    /* Rating & Price */
-    .pc__rating { color: #f1c40f; font-size: 0.8rem; margin-bottom: 5px; }
-    .pc__price-box { display: flex; align-items: center; justify-content: center; gap: 8px; }
-    .pc__price { font-size: 1.1rem; font-weight: 700; color: var(--primary); }
-    .pc__crossed { font-size: 0.85rem; color: #999; text-decoration: line-through; }
-
-    /* Buttons */
-    .btn-link_lg { font-size: 13px; text-transform: uppercase; font-weight: 500; color: #000; border: none; background: none; cursor: pointer; }
-    .js-add-wishlist { border: none; background: none; font-size: 18px; color: #000; cursor: pointer; }
-    .js-add-wishlist:hover { color: var(--discount-color); }
-
-    /* --- 7. UTILITY & FOOTER --- */
-    .d-none { display: none !important; }
-    .footer { background: #111; color: #ccc; padding: 60px 0 20px; margin-top: 60px; }
-    .footer-logo { font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 20px; display: block; }
-    .footer-links a { color: #aaa; display: block; margin-bottom: 10px; font-size: 0.9rem; }
-    .footer-links a:hover { color: #fff; }
-    .social-links { display: flex; gap: 15px; margin-top: 20px; }
-    .social-icon { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: #333; color: #fff; border-radius: 50%; font-size: 1.2rem; transition: 0.3s; }
-    .social-icon:hover { background: var(--accent); color: #000; }
-
-    /* --- 8. DETAIL PAGE --- */
-    .detail-gallery-wrapper { background: #fff; padding: 40px 0; }
-    .main-image-container { 
-        height: 500px; border: 1px solid #eee; 
-        border-radius: 8px; overflow: hidden; 
-        aspect-ratio: 1/1; /* Detail image also square for consistency */ 
-    }
-    .main-image-container img { width: 100%; height: 100%; object-fit: contain; }
-    .thumb-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
-    .thumb { cursor: pointer; opacity: 0.6; height: 100px; border-radius: 4px; border: 2px solid transparent; }
-    .thumb:hover, .thumb.active { opacity: 1; border-color: var(--accent); }
-
-    /* Filter Colors */
-    .color-opt { display: inline-block; width: 20px; height: 20px; border-radius: 50%; margin-right: 5px; cursor: pointer; border: 2px solid transparent; }
-    .color-opt.active { border-color: #000; }
-
-    /* View Toggle Buttons */
-    .view-toggle { display: flex; gap: 10px; border: 1px solid #ddd; padding: 5px; border-radius: 4px; }
-    .view-btn { border: none; background: transparent; font-size: 18px; cursor: pointer; padding: 0 5px; color: #999; }
-    .view-btn.active { color: #111; }
-
-    /* Mobile Adjustments */
-    @media (max-width: 768px) {
-        .navigation { display: none; }
-        .mobile-toggle { display: block; }
-        .slideshow { height: 400px; }
-        .slideshow-character { width: 40%; right: -50px; }
-        .shop-layout { grid-template-columns: 1fr; }
-        .sidebar { margin-bottom: 30px; }
-        .anim_appear-bottom { transform: translateY(0); position: relative; background: none; padding: 10px; border-top: 1px solid #eee; }
-        /* Force square on mobile too */
-        .pc__img-wrapper { aspect-ratio: 1/1; } 
-    }
+    /* Style tambahan agar card terlihat bisa diklik */
+    .product-card { cursor: pointer; transition: transform 0.2s; }
+    .product-card:hover { transform: translateY(-5px); }
   </style>
-</head>
-<body>
 
-  <!-- HEADER (PERSIS ZED-THREE STRUCTURE) -->
-  <header class="header">
-    <div class="container header-desk">
-      <!-- Mobile Toggle -->
-      <div class="mobile-toggle" onclick="toggleMenu()">☰</div>
-
-      <!-- Logo -->
+  <!-- HEADER MOBILE -->
+  <div class="header-mobile header_sticky">
+    <div class="container d-flex align-items-center h-100">
+      <a class="mobile-nav-activator d-block position-relative" href="#">
+        <svg class="nav-icon" width="25" height="18" viewBox="0 0 25 18"><use href="#icon_nav"/></svg>
+        <button class="btn-close-lg position-absolute top-0 start-0 w-100"></button>
+      </a>
       <div class="logo">
-        <a href="#" onclick="navigateTo('home')" style="text-decoration:none;">Djava <span>Works</span></a>
-      </div>
-
-      <!-- Desktop Navigation (Menu Lengkap) -->
-      <nav class="navigation">
-        <ul class="navigation__list list-unstyled">
-          <li><a onclick="navigateTo('home')" class="navigation__link">Beranda</a></li>
-          <li><a onclick="navigateTo('shop')" class="navigation__link">Toko</a></li>
-          <li><a onclick="navigateTo('about')" class="navigation__link">Tentang</a></li>
-          <li><a onclick="navigateTo('contact')" class="navigation__link">Kontak</a></li>
-          <li><a href="#" class="navigation__link">Keranjang</a></li>
-        </ul>
-      </nav>
-
-      <!-- Header Tools -->
-      <div class="header-tools">
-        <!-- Search -->
-        <div class="header-tools__item hover-container position-relative">
-            <div class="js-hover__open position-relative">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="7.85858" cy="7.85858" r="6.85858" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></circle>
-                    <line x1="17.6569" y1="17.6569" x2="13.1005" y2="13.1005" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></line>
-                </svg>
-            </div>
-        </div>
-
-        <!-- User -->
-        <div class="header-tools__item hover-container">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g clip-path="url(#clip0_6_29)"><path d="M10 11.2652C3.99077 11.2652 0.681274 14.108 0.681274 19.2701C0.681274 19.6732 1.00803 20 1.4112 20H18.5888C18.992 20 19.3187 19.6732 19.3188 19.2701C19.3188 14.1083 16.0093 11.2652 10 11.2652ZM2.16768 18.5402C2.45479 14.6805 5.08616 12.7251 10 12.7251C14.9139 12.7251 17.5453 14.6805 17.8326 18.5402H2.16768Z" fill="currentColor"></path><path d="M10 0C7.23969 0 5.1582 2.12336 5.1582 4.93895C5.1582 7.83699 7.33023 10.1944 10 10.1944C12.6698 10.1944 14.8419 7.83699 14.8419 4.93918C14.8419 2.12336 12.7604 0 10 0ZM10 8.7348C8.13508 8.7348 6.61805 7.03211 6.61805 4.93918C6.61805 2.92313 8.04043 1.45984 10 1.45984C11.9283 1.45984 13.382 2.95547 13.382 4.93918C13.382 7.03211 11.865 8.7348 10 8.7348Z" fill="currentColor"></path></g>
-            </svg>
-        </div>
-
-        <!-- Cart -->
-        <a href="#" class="header-tools__item header-tools__cart">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M17.6562 4.6875H15.2755C14.9652 2.05164 12.7179 0 10 0C7.28215 0 5.0348 2.05164 4.72445 4.6875H2.34375C1.91227 4.6875 1.5625 5.03727 1.5625 5.46875V19.2188C1.5625 19.6502 1.91227 20 2.34375 20H17.6562C18.0877 20 18.4375 19.6502 18.4375 19.2188V5.46875C18.4375 5.03727 18.0877 4.6875 17.6562 4.6875ZM10 1.5625C11.8548 1.5625 13.3992 2.91621 13.6976 4.6875H6.30238C6.60082 2.91621 8.14516 1.5625 10 1.5625ZM16.875 18.4375H3.125V6.25H4.6875V8.59375C4.6875 9.02523 5.03727 9.375 5.46875 9.375C5.90023 9.375 6.25 9.02523 6.25 8.59375V6.25H13.75V8.59375C13.75 9.02523 14.0998 9.375 14.5312 9.375C14.9627 9.375 15.3125 9.02523 15.3125 8.59375V6.25H16.875V18.4375Z" fill="currentColor"></path>
-            </svg>
-            <span class="cart-amount">3</span>
+        <a href="index.html">
+          <img src="assets/images/logo.png" alt="Djava Works" class="logo__image d-block" />
         </a>
       </div>
+      <a href="shop.html" class="header-tools__item header-tools__cart js-open-aside">
+        <svg class="d-block" width="20" height="20" viewBox="0 0 20 20"><use href="#icon_cart"/></svg>
+      </a>
     </div>
 
-    <!-- Mobile Menu -->
-    <nav class="header-mobile navigation" id="mobileMenu">
-        <ul class="list-unstyled">
-            <li><a onclick="navigateTo('home')" class="navigation__link py-2 d-block border-bottom">Beranda</a></li>
-            <li><a onclick="navigateTo('shop')" class="navigation__link py-2 d-block border-bottom">Toko</a></li>
-            <li><a onclick="navigateTo('about')" class="navigation__link py-2 d-block border-bottom">Tentang</a></li>
-            <li><a onclick="navigateTo('contact')" class="navigation__link py-2 d-block">Keranjang</a></li>
+    <nav class="header-mobile__navigation navigation d-flex flex-column w-100 position-absolute top-100 bg-body overflow-auto">
+      <div class="container">
+        <ul class="navigation__list list-unstyled position-relative">
+          <li class="navigation__item"><a href="index.html" class="navigation__link">Beranda</a></li>
+          <li class="navigation__item"><a href="shop.html" class="navigation__link">Toko</a></li>
+          <li class="navigation__item"><a href="contact.html" class="navigation__link">Kontak</a></li>
         </ul>
+      </div>
     </nav>
+  </div>
+
+  <!-- HEADER DESKTOP -->
+  <header id="header" class="header header-fullwidth header-transparent-bg">
+    <div class="container">
+      <div class="header-desk header-desk_type_1">
+        <div class="logo">
+          <a href="index.html">
+            <img src="assets/images/logo.png" alt="Djava Works" class="logo__image d-block" />
+          </a>
+        </div>
+        <nav class="navigation">
+          <ul class="navigation__list list-unstyled d-flex">
+            <li class="navigation__item"><a href="index.html" class="navigation__link active">Beranda</a></li>
+            <li class="navigation__item"><a href="shop.html" class="navigation__link">Toko</a></li>
+            <li class="navigation__item"><a href="contact.html" class="navigation__link">Kontak</a></li>
+          </ul>
+        </nav>
+        <div class="header-tools d-flex align-items-center">
+          <div class="header-tools__item hover-container">
+            <div class="js-hover__open position-relative">
+              <a class="js-search-popup search-field__actor" href="#">
+                <svg class="d-block" width="20" height="20"><use href="#icon_search"/></svg>
+              </a>
+            </div>
+          </div>
+          <a href="shop.html" class="header-tools__item header-tools__cart">
+            <svg class="d-block" width="20" height="20"><use href="#icon_cart"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
   </header>
 
   <main>
-    <!-- 1. HALAMAN BERANDA -->
-    <section id="home" class="page-section">
-      
-      <!-- Slider Hero (Zed-Three Style - Fade Effect, Character Right) -->
-      <div class="slideshow swiper-container">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <div class="overflow-hidden position-relative h-100">
-              <div class="slideshow-character pos_right-center">
-                <!-- Placeholder Character -->
-                 <img loading="lazy" src="https://picsum.photos/seed/char1/500/733" width="542" height="733" alt="Character 1" class="slideshow-character__img animate animate_fade animate_btt animate_delay-9 w-auto h-auto">
-                 <div class="character_markup type2">
-                    <p class="text-uppercase font-sofia mark-grey-color animate animate_fade animate_btt animate_delay-10 mb-0">Djava Works</p>
-                 </div>
-              </div>
-              <div class="slideshow-text container position-absolute start-50 top-50 translate-middle">
-                <h6 class="text_dash text-uppercase fs-base fw-medium animate animate_fade animate_btt animate_delay-3">Terbaru</h6>
-                <h2 class="h1 fw-normal mb-0 animate animate_fade animate_btt animate_delay-5">Motion-Fit</h2>
-                <h2 class="h1 fw-bold animate animate_fade animate_btt animate_delay-5">Volley Ball</h2>
-                <a href="#" onclick="navigateTo('shop')" class="btn-link btn-link_lg default-underline fw-medium animate animate_fade animate_btt animate_delay-7">SportWear</a>
+    <!-- SLIDER -->
+    <section class="swiper-container js-swiper-slider slideshow slideshow_small slideshow_split" data-settings='{"autoplay": {"delay": 5000}, "slidesPerView": 1, "effect": "fade", "loop": true}'>
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="slide-split h-100 d-block d-md-flex overflow-hidden">
+            <div class="slide-split_text position-relative d-flex align-items-center" style="background-color: #f5e6e0;">
+              <div class="slideshow-text container p-3 p-xl-5">
+                <h2 class="text-uppercase section-title fw-normal mb-3">KOLEKSI <br /><strong>OLAHRAGA</strong></h2>
+                <p class="mb-0">Temukan perlengkapan olahraga terbaik untuk kenyamanan dan performa maksimalmu.</p>
               </div>
             </div>
-          </div>
-          
-          <div class="swiper-slide">
-            <div class="overflow-hidden position-relative h-100">
-              <div class="slideshow-character pos_right-center">
-                 <img loading="lazy" src="https://picsum.photos/seed/char2/400/733" width="400" height="733" alt="Character 2" class="slideshow-character__img animate animate_fade animate_btt animate_delay-9 w-auto h-auto">
-                 <div class="character_markup">
-                    <p class="text-uppercase font-sofia mark-grey-color animate animate_fade animate_btt animate_delay-10 mb-0">Djava Works</p>
-                 </div>
-              </div>
-              <div class="slideshow-text container position-absolute start-50 top-50 translate-middle">
-                <h6 class="text_dash text-uppercase fs-base fw-medium animate animate_fade animate_btt animate_delay-3">Diskon</h6>
-                <h2 class="h1 fw-normal mb-0 animate animate_fade animate_btt animate_delay-5">Motion-Fit</h2>
-                <h2 class="h1 fw-bold animate animate_fade animate_btt animate_delay-5">Badminton</h2>
-                <a href="#" onclick="navigateTo('shop')" class="btn-link btn-link_lg default-underline fw-medium animate animate_fade animate_btt animate_delay-7">SportWear</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="swiper-slide">
-            <div class="overflow-hidden position-relative h-100">
-              <div class="slideshow-character pos_right-center">
-                 <img loading="lazy" src="https://picsum.photos/seed/char3/400/690" width="400" height="690" alt="Character 3" class="slideshow-character__img animate animate_fade animate_rtl animate_delay-10 w-auto h-auto">
-              </div>
-              <div class="slideshow-text container position-absolute start-50 top-50 translate-middle">
-                <h6 class="text_dash text-uppercase fs-base fw-medium animate animate_fade animate_btt animate_delay-3">Koleksi</h6>
-                <h2 class="h1 fw-normal mb-0 animate animate_fade animate_btt animate_delay-5">Motion-Fit</h2>
-                <h2 class="h1 fw-bold animate animate_fade animate_btt animate_delay-5">Running</h2>
-                <a href="#" onclick="navigateTo('shop')" class="btn-link btn-link_lg default-underline fw-medium animate animate_fade animate_btt animate_delay-7">SportWear</a>
+            <div class="slide-split_media position-relative">
+              <div class="slideshow-bg" style="background-color: #f5e6e0;">
+                <img loading="lazy" src="assets/images/home/demo3/slideshow-character1.png" width="630" height="450" alt="Banner Olahraga" class="slideshow-bg__img object-fit-cover" />
               </div>
             </div>
           </div>
         </div>
-
-        <!-- Pagination -->
-        <div class="container">
-          <div class="slideshow-pagination slideshow-number-pagination d-flex align-items-center position-absolute bottom-0 mb-5"></div>
-        </div>
-      </div>
-      
-      <div class="container mw-1620 bg-white border-radius-10">
-        <div class="mb-3 mb-xl-5 pt-1 pb-4"></div>
-
-        <!-- Kategori (Carousel) -->
-        <section class="category-carousel container">
-          <h2 class="section-title text-center mb-3 pb-xl-2 mb-xl-4">Mungkin Anda Suka</h2>
-          <div class="position-relative">
-            <div class="swiper-container js-swiper-slider">
-              <div class="swiper-wrapper text-center">
-                 <div class="swiper-slide">
-                    <img loading="lazy" class="w-100 h-auto mb-3 mx-auto" src="https://picsum.photos/seed/cat1/100/100" width="124" height="124" style="border-radius:50%;">
-                    <div class="text-center"><a href="#" onclick="filterShop('basketball')" class="menu-link fw-medium">Wanita<br></a></div>
-                 </div>
-                 <div class="swiper-slide">
-                    <img loading="lazy" class="w-100 h-auto mb-3 mx-auto" src="https://picsum.photos/seed/cat2/100/100" width="124" height="124" style="border-radius:50%;">
-                    <div class="text-center"><a href="#" onclick="filterShop('running')" class="menu-link fw-medium">Pria<br></a></div>
-                 </div>
-                 <div class="swiper-slide">
-                    <img loading="lazy" class="w-100 h-auto mb-3 mx-auto" src="https://picsum.photos/seed/cat3/100/100" width="124" height="124" style="border-radius:50%;">
-                    <div class="text-center"><a href="#" onclick="filterShop('badminton')" class="menu-link fw-medium">Anak<br></a></div>
-                 </div>
-                 <div class="swiper-slide">
-                    <img loading="lazy" class="w-100 h-auto mb-3 mx-auto" src="https://picsum.photos/seed/cat4/100/100" width="124" height="124" style="border-radius:50%;">
-                    <div class="text-center"><a href="#" onclick="filterShop('volleyball')" class="menu-link fw-medium">Pria<br></a></div>
-                 </div>
-                 <div class="swiper-slide">
-                    <img loading="lazy" class="w-100 h-auto mb-3 mx-auto" src="https://picsum.photos/seed/cat5/100/100" width="124" height="124" style="border-radius:50%;">
-                    <div class="text-center"><a href="#" onclick="filterShop('gym')" class="menu-link fw-medium">Pria<br></a></div>
-                 </div>
-                 <div class="swiper-slide">
-                    <img loading="lazy" class="w-100 h-auto mb-3 mx-auto" src="https://picsum.photos/seed/cat6/100/100" width="124" height="124" style="border-radius:50%;">
-                    <div class="text-center"><a href="#" onclick="filterShop('custom')" class="menu-link fw-medium">Pria<br></a></div>
-                 </div>
-                 <div class="swiper-slide">
-                    <img loading="lazy" class="w-100 h-auto mb-3 mx-auto" src="https://picsum.photos/seed/cat8/100/100" width="124" height="124" style="border-radius:50%;">
-                    <div class="text-center"><a href="#" onclick="filterShop('all')" class="menu-link fw-medium">Anak<br></a></div>
-                 </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <div class="mb-3 mb-xl-5 pt-1 pb-4"></div>
-
-        <!-- Produk Pilihan (Square Grid) -->
-        <section class="products-grid container">
-          <h2 class="section-title text-center mb-3 pb-xl-3 mb-xl-4">Produk Pilihan</h2>
-          <div class="row" id="home-products"></div>
-          <div class="text-center mt-2">
-             <a href="#" onclick="navigateTo('shop')" class="btn-link btn-link_lg default-underline text-uppercase fw-medium">Lihat Semua</a>
-          </div>
-        </section>
-
-        <div class="mb-3 mb-xl-5 pt-1 pb-4"></div>
+        <!-- Tambah slide lainnya sesuai kebutuhan -->
       </div>
     </section>
 
-    <!-- 2. HALAMAN TOKO (Sidebar Zed-Three + Square Grid) -->
-    <section id="shop" class="page-section d-none">
-      <!-- Banner Toko -->
-      <div class="slideshow swiper-container" style="height: 250px; margin-bottom: 30px;">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <div class="overflow-hidden position-relative h-100">
-               <div class="slideshow-text container">
-                 <h2 class="fw-bold">Katalog Lengkap</h2>
-                 <p>Pilih Kategori Favoritmu</p>
-               </div>
+    <!-- KATEGORI -->
+    <section class="category-carousel container">
+      <h2 class="section-title text-center mb-3 pb-xl-2 mb-xl-4">Mungkin Anda Suka</h2>
+      <div class="position-relative">
+        <div class="swiper-container js-swiper-slider" data-settings='{"autoplay": {"delay": 5000}, "slidesPerView": 8, "slidesPerGroup": 1, "effect": "none", "loop": true}'>
+          <div class="swiper-wrapper">
+            <!-- Items Kategori -->
+            <div class="swiper-slide">
+              <div class="text-center">
+                 <!-- Klik gambar category bisa langsung ke halaman toko dengan filter -->
+                 <a href="shop.html" class="d-block mb-3"><img loading="lazy" class="w-100 h-auto" src="assets/images/home/demo3/category_1.png" width="124" height="124" alt="" /></a>
+                 <h6 class="mb-0">Pakaian Pria</h6>
+              </div>
             </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container mw-1620 bg-white">
-        <div class="shop-layout row">
-          
-          <!-- SIDEBAR KIRI (PERSIS ZED-THREE STYLE) -->
-          <div class="col-md-3">
-            <aside class="sidebar">
-              <!-- View Toggle -->
-              <div class="view-toggle justify-content-center mb-4 d-md-none">
-                  <button class="view-btn active" onclick="changeView('grid')">⊞</button>
-                  <button class="view-btn" onclick="changeView('list')">≣</button>
-              </div>
-
-              <!-- Kategori -->
-              <h4 class="sidebar-title">Kategori</h4>
-              <ul class="cat-list list-unstyled">
-                <li><a onclick="applyFilters('category', 'all')" class="active">Semua Olahraga</a></li>
-                <li><a onclick="applyFilters('category', 'basketball')">Basketball</a></li>
-                <li><a onclick="applyFilters('category', 'running')">Running</a></li>
-                <li><a onclick="applyFilters('category', 'badminton')">Badminton</a></li>
-                <li><a onclick="applyFilters('category', 'volleyball')">Volleyball</a></li>
-                <li><a onclick="applyFilters('category', 'table-tennis')">Table Tennis</a></li>
-                <li><a onclick="applyFilters('category', 'gym')">Gym & Fitness</a></li>
-                <li><a onclick="applyFilters('category', 'custom')">Custom</a></li>
-              </ul>
-
-              <!-- Filter Warna -->
-              <h4 class="sidebar-title mt-4">Warna</h4>
-              <div class="mb-3">
-                 <div class="color-opt" onclick="applyFilters('color', 'all')" style="background: conic-gradient(red, blue); width:30px;"></div>
-                 <div class="color-opt" onclick="applyFilters('color', 'black')" style="background: black;"></div>
-                 <div class="color-opt" onclick="applyFilters('color', 'white')" style="background: white;"></div>
-                 <div class="color-opt" onclick="applyFilters('color', 'red')" style="background: #e74c3c;"></div>
-              </div>
-
-              <!-- Filter Ukuran -->
-              <h4 class="sidebar-title mt-4">Ukuran</h4>
-              <div>
-                 <label><input type="checkbox" onchange="toggleSize(this, 'S')"> S</label><br></label>
-                 <label><input type="checkbox" onchange="toggleSize(this, 'M')"> M</label><br></label>
-                 <label><input type="checkbox" onchange="toggleSize(this, 'L')"> L</label><br></label>
-              </div>
-
-              <!-- Filter Merk -->
-              <h4 class="sidebar-title mt-4">Merk</h4>
-              <div>
-                 <label><input type="checkbox" onchange="toggleBrand(this, 'Nike')"> Nike</label><br></label>
-                 <label><input type="checkbox" onchange="toggleBrand(this, 'Adidas')"> Adidas</label><br></label>
-              </div>
-            </aside>
-          </div>
-
-          <!-- PRODUK KANAN -->
-          <div class="col-md-9">
-             <h2 class="section-title text-start" id="shop-title">Semua Produk</h2>
-             <div class="product-grid" id="shop-products"></div>
+            <!-- Tambah kategori lainnya -->
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 3. HALAMAN DETAIL -->
-    <section id="product-detail" class="page-section d-none">
-      <div class="container mw-1620">
-        <a href="#" onclick="navigateTo('shop')" class="btn-link btn-link_lg me-4 text-uppercase fw-medium">&larr; Kembali ke Toko</a>
-
-        <div class="detail-gallery-wrapper">
-            <div class="row">
-                <!-- Kiri: Galeri Square -->
-                <div class="col-lg-6">
-                    <div class="main-image-container">
-                        <img id="detail-main-img" src="" alt="Detail Product">
-                    </div>
-                    <div class="thumb-grid" id="detail-thumbs"></div>
-                </div>
-
-                <!-- Kanan: Info -->
-                <div class="col-lg-6">
-                    <span id="detail-cat" class="text-uppercase text-secondary fs-base">Category</span>
-                    <h1 class="h1 fw-normal mb-0" id="detail-name">Product Name</h1>
-                    
-                    <div class="detail-rating mb-4" id="detail-stars">
-                        <!-- Stars -->
-                    </div>
-
-                    <div class="detail-price-box mb-4">
-                        <div class="detail-price" id="detail-price">Rp 0</div>
-                        <div class="detail-crossed" id="detail-crossed"></div>
-                    </div>
-
-                    <div class="detail-meta mb-4" style="background:var(--bg-gray); padding:20px; border-radius:8px;">
-                        <div class="detail-meta-item"><span class="detail-label">Stok:</span> <span>Tersedia</span></div>
-                        <div class="detail-meta-item"><span class="detail-label">Bahan:</span> <span id="detail-material">-</span></div>
-                        <div class="detail-meta-item"><span class="detail-label">Berat:</span> <span id="detail-weight">-</span></div>
-                    </div>
-
-                    <p class="text-secondary mb-4" id="detail-desc">Deskripsi...</p>
-
-                    <div class="d-grid gap-2">
-                        <a id="detail-wa-link" href="#" target="_blank" class="btn btn-success btn-lg fw-bold text-white">
-                            <i class="fa fa-whatsapp"></i> Beli Sekarang
-                        </a>
-                        <button class="btn btn-outline-dark btn-lg">Keranjang</button>
-                    </div>
-                </div>
+    <!-- PRODUK UNGGULAN (GRID) -->
+    <section class="products-grid container">
+      <h2 class="section-title text-center mb-3 pb-xl-3 mb-xl-4">Produk Unggulan</h2>
+      <div class="row" id="home-products">
+        <!-- PRODUK 1 -->
+        <div class="col-6 col-md-4 col-lg-3">
+          <div class="product-card product-card_style3 mb-3 mb-md-4 mb-xxl-5" onclick="window.location.href='detail.html'">
+            <div class="pc__img-wrapper">
+              <!-- Klik gambar masuk ke detail -->
+              <a href="detail.html">
+                <img loading="lazy" src="assets/images/home/demo3/product-4.jpg" width="330" height="400" alt="Jaket Sport" class="pc__img">
+              </a>
             </div>
+            <div class="pc__info position-relative">
+              <h6 class="pc__title"><a href="detail.html">Jaket Ringan Olahraga</a></h6>
+              <div class="product-card__price d-flex align-items-center">
+                <span class="money price text-secondary">Rp 450.000</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- PRODUK 2 -->
+        <div class="col-6 col-md-4 col-lg-3">
+          <div class="product-card product-card_style3 mb-3 mb-md-4 mb-xxl-5" onclick="window.location.href='detail.html'">
+            <div class="pc__img-wrapper">
+              <a href="detail.html">
+                <img loading="lazy" src="assets/images/home/demo3/product-5.jpg" width="330" height="400" alt="Baju Lari" class="pc__img">
+              </a>
+            </div>
+            <div class="pc__info position-relative">
+              <h6 class="pc__title"><a href="detail.html">Kaos Lari Dri-Fit</a></h6>
+              <div class="product-card__price d-flex align-items-center">
+                <span class="money price text-secondary">Rp 180.000</span>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <!-- Produk Lainnya -->
-        <div class="related-section mt-5">
-            <h2 class="section-title">Produk Lainnya</h2>
-            <div class="product-grid" id="related-products"></div>
+        <!-- PRODUK 3 -->
+        <div class="col-6 col-md-4 col-lg-3">
+          <div class="product-card product-card_style3 mb-3 mb-md-4 mb-xxl-5" onclick="window.location.href='detail.html'">
+            <div class="pc__img-wrapper">
+              <a href="detail.html">
+                <img loading="lazy" src="assets/images/home/demo3/product-6.jpg" width="330" height="400" alt="Celana Training" class="pc__img">
+              </a>
+            </div>
+            <div class="pc__info position-relative">
+              <h6 class="pc__title"><a href="detail.html">Celana Training Pro</a></h6>
+              <div class="product-card__price d-flex align-items-center">
+                <span class="money price text-secondary">Rp 250.000</span>
+              </div>
+            </div>
+          </div>
         </div>
 
-      </div>
-    </section>
-
-    <!-- 4. HALAMAN TENTANG -->
-    <section id="about" class="page-section d-none">
-      <div class="slideshow swiper-container" style="height: 300px; margin-bottom: 30px;">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <div class="overflow-hidden position-relative h-100">
-               <div class="slideshow-text container">
-                 <h6 class="text_dash text-uppercase fs-base fw-medium">Tentang</h6>
-                 <h2 class="h1 fw-bold">Djava Works</h2>
-                 <p>Kualitas & Kepercayaan</p>
+        <!-- PRODUK 4 -->
+        <div class="col-6 col-md-4 col-lg-3">
+          <div class="product-card product-card_style3 mb-3 mb-md-4 mb-xxl-5" onclick="window.location.href='detail.html'">
+            <div class="pc__img-wrapper">
+              <a href="detail.html">
+                <img loading="lazy" src="assets/images/home/demo3/product-7.jpg" width="330" height="400" alt="Sepatu Lari" class="pc__img">
+              </a>
+            </div>
+            <div class="pc__info position-relative">
+              <h6 class="pc__title"><a href="detail.html">Sepatu Lari Ultra</a></h6>
+              <div class="product-card__price d-flex align-items-center">
+                <span class="money price text-secondary">Rp 750.000</span>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      <div class="container mw-1620 bg-white pt-4">
-        <h2 class="section-title">Tentang Kami</h2>
-        <p class="text-secondary lead mb-4">Djava Works hadir dengan menyediakan apparel olahraga kelas dunia.</p>
-        <img src="https://picsum.photos/seed/about/1000/400" class="img-fluid rounded">
-      </div>
-    </section>
-
-    <!-- 5. HALAMAN KONTAK -->
-    <section id="contact" class="page-section d-none">
-      <div class="container mw-1620 bg-white pt-4">
-        <h2 class="section-title">Hubungi Kami</h2>
-        <div class="row justify-content-center">
-          <div class="col-md-6 text-center">
-             <div style="border: 1px dashed #ccc; padding: 50px; border-radius: 8px;">
-                <p class="mb-4">Ada pertanyaan? Hubungi kami.</p>
-                <p class="fw-bold fs-4 mb-4">help.djava@gmail.com</p>
-                <p class="fw-bold fs-4 mb-4">+62 856-9320-6083</p>
-                <a href="https://wa.me/6285693206083" class="btn btn-success btn-lg text-white">
-                    <i class="fa fa-whatsapp"></i> Chat WhatsApp
-                </a>
-             </div>
-          </div>
-        </div>
+      <div class="text-center mt-2">
+        <a class="btn-link btn-link_lg default-underline text-uppercase fw-medium" href="shop.html">Lihat Semua Produk</a>
       </div>
     </section>
 
   </main>
 
-  <!-- FOOTER (Zed-Three Type 2) -->
-  <footer class="footer">
-    <div class="container">
+  <hr class="mt-5 text-secondary" />
+  
+  <!-- FOOTER -->
+  <footer class="footer footer_type_2">
+    <div class="footer-middle container">
       <div class="row row-cols-lg-5 row-cols-2">
         <div class="footer-column footer-store-info col-12 mb-4 mb-lg-0">
           <div class="logo">
-            <a href="#" onclick="navigateTo('home')" style="text-decoration:none;">Djava <span>Works</span></a>
+            <a href="index.html">
+              <img src="assets/images/logo.png" alt="Djava Works" class="logo__image d-block" />
+            </a>
           </div>
-          <p class="footer-address">TANGERANG - INDONESIA</p>
-          <p class="m-0"><strong class="fw-medium">zedthree007@gmail.com</strong></p>
-          <p><strong class="fw-medium">+62 813-1600-178</strong></p>
-
-          <ul class="social-links list-unstyled d-flex flex-wrap mb-0">
-            <li><a href="#" class="footer__social-link d-block"><i class="fa fa-facebook"></i></a></li>
-            <li><a href="#" class="footer__social-link d-block"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="#" class="footer__social-link d-block"><i class="fa fa-instagram"></i></a></li>
-            <li><a href="#" class="footer__social-link d-block"><i class="fa fa-youtube"></i></a></li>
-            <li><a href="#" class="footer__social-link d-block"><i class="fa fa-pinterest"></i></a></li>
-          </ul>
+          <p class="footer-address">Jl. Olahraga No. 12, Jakarta Selatan, Indonesia</p>
+          <p class="m-0"><strong class="fw-medium">halo@javaworks.com</strong></p>
+          <p><strong class="fw-medium">+62 812 3456 789</strong></p>
         </div>
-
         <div class="footer-column footer-menu mb-4 mb-lg-0">
           <h6 class="sub-menu__title text-uppercase">Perusahaan</h6>
           <ul class="sub-menu__list list-unstyled">
-            <li class="sub-menu__item"><a href="#" onclick="navigateTo('about')" class="menu-link menu-link_us-s">Tentang Kami</a></li>
-            <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Karir</a></li>
-            <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Afiliasi</a></li>
-            <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Blog</a></li>
-            <li class="sub-menu__item"><a href="#" onclick="navigateTo('contact')" class="menu-link menu-link_us-s">Hubungi Kami</a></li>
+            <li class="sub-menu__item"><a href="index.html" class="menu-link menu-link_us-s">Tentang Kami</a></li>
+            <li class="sub-menu__item"><a href="contact.html" class="menu-link menu-link_us-s">Hubungi Kami</a></li>
           </ul>
         </div>
-
         <div class="footer-column footer-menu mb-4 mb-lg-0">
-          <h6 class="sub-menu__title text-uppercase">Toko</h6>
+          <h6 class="sub-menu__title text-uppercase">Belanja</h6>
           <ul class="sub-menu__list list-unstyled">
-            <li class="sub-menu__item"><a href="#" onclick="navigateTo('home')" class="menu-link menu-link_us-s">Terbaru</a></li>
-            <li class="sub-menu__item"><a href="#" onclick="applyFilters('category', 'aksesoris')" class="menu-link menu-link_us-s">Aksesoris</a></li>
-            <li class="sub-menu__item"><a href="#" onclick="applyFilters('category', 'basketball')" class="menu-link menu-link_us-s">Pria</a></li>
-            <li class="sub-menu__item"><a href="#" onclick="applyFilters('category', 'running')" class="menu-link menu-link_us-s">Wanita</a></li>
-            <li class="sub-menu__item"><a href="#" onclick="navigateTo('shop')" class="menu-link menu-link_us-s">ANAK</a></li>
-            <li class="sub-menu__item"><a href="#" onclick="navigateTo('shop')" class="menu-link menu-link_us-s">Belanja Semua</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-column footer-menu mb-4 mb-lg-0">
-          <h6 class="sub-menu__title text-uppercase">Kategori</h6>
-          <ul class="sub-menu__list list-unstyled">
-            <li class="sub-menu__item"><a href="#" onclick="applyFilters('category', 'custom')" class="menu-link menu-link_us-s">Jersey</a></li>
-            <li class="sub-menu__item"><a href="#" onclick="applyFilters('category', 'basketball')" class="menu-link menu-link_us-s">Pria</a></li>
-            <li class="sub-menu__item"><a href="#" onclick="applyFilters('category', 'running')" class="menu-link menu-link_us-s">Wanita</a></li>
-            <li class="sub-menu__item"><a href="#" onclick="navigateTo('shop')" class="menu-link menu-link_us-s">Belanja Semua</a></li>
+            <li class="sub-menu__item"><a href="shop.html" class="menu-link menu-link_us-s">Produk Pria</a></li>
+            <li class="sub-menu__item"><a href="shop.html" class="menu-link menu-link_us-s">Produk Wanita</a></li>
           </ul>
         </div>
       </div>
     </div>
-
     <div class="footer-bottom">
       <div class="container d-md-flex align-items-center">
-        <span class="footer-copyright me-auto">&copy;2024 Djava Works. All Rights Reserved.</span>
+        <span class="footer-copyright me-auto">©2024 Djava Works. All Rights Reserved.</span>
       </div>
     </div>
   </footer>
 
   <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-
-  <script>
-    // --- DATABASE GENERATOR (20 PRODUK PER KATEGORI) ---
-    const categories = ['basketball', 'running', 'badminton', 'volleyball', 'table-tennis', 'gym', 'custom'];
-    let productsDB = [];
-
-    function generateProducts() {
-        let idCounter = 1;
-        categories.forEach(cat => {
-            for(let i=0; i<20; i++) {
-                productsDB.push({
-                    id: idCounter++,
-                    name: `Produk ${cat.toUpperCase()} ${i+1}`,
-                    category: cat,
-                    brand: getRandomBrand(),
-                    size: getRandomSize(),
-                    color: getRandomColor(),
-                    price: (Math.floor(Math.random() * 10) + 1) * 50000,
-                    rating: (Math.random() * (5 - 3.5) + 3.5).toFixed(1),
-                    img: `https://picsum.photos/seed/${cat}${i}/300/300`, // Square Source
-                    images: [
-                        `https://picsum.photos/seed/${cat}${i}/300/300`,
-                        `https://picsum.photos/seed/${cat}${i}b/300/300`,
-                        `https://picsum.photos/seed/${cat}${i}c/300/300`,
-                        `https://picsum.photos/seed/${cat}${i}d/300/300`
-                    ],
-                    desc: `Deskripsi lengkap untuk produk ${cat} nomor ${i+1}. Kualitas terbaik dari Djava Works.`
-                });
-            }
-        });
-    }
-
-    function getRandomBrand() { const b = ['Nike', 'Adidas', 'Puma', 'Mizuno', 'Li-Ning']; return b[Math.floor(Math.random()*b.length)]; }
-    function getRandomSize() { const s = ['S', 'M', 'L', 'XL', 'XXL']; return s[Math.floor(Math.random()*s.length)]; }
-    function getRandomColor() { const c = ['black', 'white', 'red', 'blue', 'green']; return c[Math.floor(Math.random()*c.length)]; }
-
-    generateProducts();
-
-    // --- RENDER CARD (MODERN SQUARE STYLE) ---
-    function renderCard(product, isShop = false) {
-        const colClass = isShop ? 'col-6 col-md-4 col-lg-4' : 'col-6 col-md-4 col-lg-3';
-        
-        return `
-        <div class="${colClass}">
-            <div class="product-card_style3 cursor-pointer" onclick="openDetail(${product.id})">
-                <!-- IMAGE: Square Aspect Ratio -->
-                <div class="pc__img-wrapper">
-                    <img src="${product.img}" alt="${product.name}" class="pc__img">
-                </div>
-
-                <div class="pc__info">
-                    <div class="pc__cat">${product.category}</div>
-                    <h6 class="pc__title"><a>${product.name}</a></h6>
-                    
-                    <!-- Rating -->
-                    <div class="pc__rating">
-                        ${getStars(product.rating)}
-                    </div>
-
-                    <!-- Price -->
-                    <div class="pc__price-box">
-                        <span class="pc__price">Rp ${product.price.toLocaleString('id-ID')}</span>
-                    </div>
-
-                    <!-- Hover Actions -->
-                    <div class="anim_appear-bottom">
-                        <a href="https://wa.me/6285693206083?text=Halo, saya mau beli ${product.name}" class="btn-link_lg me-4">Beli</a>
-                        <button class="js-add-wishlist"><i class="fa fa-heart-o"></i></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        `;
-    }
-
-    function getStars(rating) {
-        let stars = '';
-        for(let i=1; i<=5; i++) {
-            if(i <= rating) stars += '<i class="fa fa-star"></i>';
-            else if (i === Math.ceil(rating) && !Number.isInteger(rating)) stars += '<i class="fa fa-star-half-o"></i>';
-            else stars += '<i class="fa fa-star-o"></i>';
-        }
-        return stars;
-    }
-
-    // --- FILTER LOGIC ---
-    let activeFilters = { category: 'all', color: 'all', size: [], brand: [] };
-
-    function renderGrid(containerId, isShop = false) {
-        const container = document.getElementById(containerId);
-        container.innerHTML = '';
-
-        productsDB.forEach(p => {
-            let show = true;
-
-            // Category
-            if(activeFilters.category !== 'all' && p.category !== activeFilters.category) show = false;
-
-            // Color
-            if(activeFilters.color !== 'all' && p.color !== activeFilters.color) show = false;
-
-            // Size
-            if(activeFilters.size.length > 0 && !activeFilters.size.includes(p.size)) show = false;
-
-            // Brand
-            if(activeFilters.brand.length > 0 && !activeFilters.brand.includes(p.brand)) show = false;
-
-            if(show) {
-                container.innerHTML += renderCard(p, isShop);
-            }
-        });
-    }
-
-    function applyFilters(type, value) {
-        if(type === 'category') activeFilters.category = value;
-        if(type === 'color') activeFilters.color = value;
-        
-        // Toggle Array Filters
-        if(type === 'size') {
-            const idx = activeFilters.size.indexOf(value);
-            if(idx === -1) activeFilters.size.push(value);
-            else activeFilters.size.splice(idx, 1);
-        }
-        if(type === 'brand') {
-            const idx = activeFilters.brand.indexOf(value);
-            if(idx === -1) activeFilters.brand.push(value);
-            else activeFilters.brand.splice(idx, 1);
-        }
-
-        // Update Title
-        const titles = { 
-            'all':'Semua Produk', 'basketball':'Basketball', 'running':'Running', 'badminton':'Badminton', 
-            'volleyball':'Volleyball', 'table-tennis':'Table Tennis', 'gym':'Gym', 'custom':'Custom' 
-        };
-        document.getElementById('shop-title').innerText = titles[value] || 'Produk Terfilter';
-
-        // Update Sidebar Active
-        if(event && event.target && type === 'category') {
-            document.querySelectorAll('.cat-list a').forEach(a => a.classList.remove('active'));
-            if(event.target.tagName === 'A') event.target.classList.add('active');
-        }
-
-        renderGrid('shop-products', true);
-    }
-
-    // --- NAVIGATION ---
-    function navigateTo(page) {
-        document.querySelectorAll('.page-section').forEach(s => s.classList.add('d-none'));
-        document.getElementById(page).classList.remove('d-none');
-        window.scrollTo(0,0);
-        document.getElementById('mobileMenu').classList.remove('navigation'); // Hide mobile menu
-        document.getElementById('mobileMenu').classList.remove('show');
-    }
-
-    function toggleMenu() {
-        const menu = document.getElementById('mobileMenu');
-        if (menu.style.display === 'flex') {
-            menu.style.display = 'none';
-            menu.classList.remove('navigation');
-        } else {
-            menu.style.display = 'flex';
-            menu.classList.add('navigation');
-        }
-    }
-
-    // --- VIEW TOGGLE (LIST vs GRID) ---
-    function changeView(type) {
-        const container = document.getElementById('shop-products');
-        if(type === 'list') {
-            container.classList.remove('product-grid');
-            container.classList.add('d-flex');
-            container.classList.add('flex-column');
-            container.style.maxWidth = '100%';
-            // Force list card style here if needed, or keep card and flex-wrap container
-        } else {
-            container.classList.remove('d-flex');
-            container.classList.remove('flex-column');
-            container.classList.add('product-grid');
-        }
-    }
-
-    // --- DETAIL PAGE ---
-    function openDetail(id) {
-        const p = productsDB.find(x => x.id === id);
-        if(!p) return;
-
-        document.getElementById('detail-name').innerText = p.name;
-        document.getElementById('detail-cat').innerText = p.category;
-        document.getElementById('detail-price').innerText = 'Rp ' + p.price.toLocaleString('id-ID');
-        document.getElementById('detail-desc').innerText = p.desc;
-        document.getElementById('detail-stars').innerHTML = getStars(p.rating) + ` <span style="font-size:0.8rem; color:#777; margin-left:10px;">(${p.rating})</span>`;
-
-        // Gallery
-        const mainImg = document.getElementById('detail-main-img');
-        const thumbs = document.getElementById('detail-thumbs');
-        mainImg.src = p.images[0];
-        thumbs.innerHTML = '';
-
-        p.images.forEach((img, i) => {
-            thumbs.innerHTML += `
-            <div class="thumb ${i===0?'active':''}" onclick="swapImg(this, '${img}')">
-                <img src="${img}">
-            </div>`;
-        });
-
-        // Related
-        const rel = document.getElementById('related-products');
-        rel.innerHTML = '';
-        productsDB.filter(x => x.id !== id).slice(0, 4).forEach(r => {
-            rel.innerHTML += renderCard(r, false);
-        });
-
-        navigateTo('product-detail');
-    }
-
-    function swapImg(el, src) {
-        document.getElementById('detail-main-img').src = src;
-        document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
-        el.classList.add('active');
-    }
-
-    // --- INIT SWIPER ---
-    window.onload = function() {
-        // Init Home Slider
-        const swiperHome = new Swiper(".swiper-container", {
-            autoplay: { delay: 5000 },
-            slidesPerView: 1,
-            effect: 'fade',
-            loop: true
-        });
-
-        // Init Slider
-        const swiperCat = new Swiper(".js-swiper-slider", {
-            autoplay: { delay: 5000 },
-            slidesPerView: 8,
-            spaceBetween: 30,
-            loop: true,
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev'
-            }
-        });
-
-        // Render Data
-        renderGrid('home-products');
-        renderGrid('shop-products', true);
-    };
-  </script>
+  <script src="assets/js/plugins/jquery.min.js"></script>
+  <script src="assets/js/plugins/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/plugins/swiper.min.js"></script>
+  <script src="assets/js/theme.js"></script>
 </body>
 </html>
