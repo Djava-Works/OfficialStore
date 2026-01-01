@@ -1,17 +1,75 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Djava Work</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Djava Work</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#f4f6f8;color:#222}
+a{text-decoration:none;color:inherit}
+
+/* HEADER */
+header{
+  background:#111;color:#fff;
+  display:flex;justify-content:space-between;
+  padding:15px 20px;align-items:center
+}
+nav a{margin-left:15px;color:#fff;font-weight:bold}
+.btn-wa{background:#25d366;padding:6px 12px;border-radius:6px}
+
+/* SLIDER */
+.slider{position:relative;height:260px;overflow:hidden}
+.slide{
+  position:absolute;width:100%;height:100%;
+  background-size:cover;background-position:center;
+  display:none;align-items:center;color:#fff;padding:40px
+}
+.slide.active{display:flex}
+.slide h1{font-size:32px;background:rgba(0,0,0,.5);padding:10px}
+
+/* SECTION */
+section{padding:50px 20px}
+h2{margin-bottom:20px}
+
+/* TOKO */
+.product-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px
+}
+.product{
+  background:#fff;border-radius:10px;
+  box-shadow:0 4px 10px rgba(0,0,0,.1);
+  overflow:hidden
+}
+.product img{width:100%;height:180px;object-fit:cover}
+.product div{padding:15px}
+.price{color:#e63946;font-weight:bold;margin:8px 0}
+.btn{
+  display:inline-block;background:#111;color:#fff;
+  padding:8px 14px;border-radius:6px
+}
+
+/* ABOUT */
+.about{
+  background:#111;color:#fff;
+  text-align:center
+}
+
+/* FOOTER */
+footer{
+  background:#000;color:#fff;
+  text-align:center;padding:15px
+}
+</style>
 </head>
 
 <body>
 
-<!-- HEADER -->
 <header>
-  <div class="logo">Djava Work</div>
+  <strong>Djava Work</strong>
   <nav>
     <a href="#beranda">Beranda</a>
     <a href="#toko">Toko</a>
@@ -21,90 +79,94 @@
   </nav>
 </header>
 
-<!-- BERANDA -->
-<section id="beranda" class="hero">
-  <h1>Baju Sport Pria</h1>
-  <p>Nyaman • Kuat • Modern</p>
-  <a href="#toko" class="btn">Lihat Toko</a>
+<!-- BERANDA / SLIDER -->
+<section id="beranda" class="slider">
+  <div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1521412644187-c49fa049e84d')">
+    <h1>Sportwear Pria Profesional</h1>
+  </div>
+  <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1546484959-f9a76e626dbd')">
+    <h1>Sportwear Wanita Modern</h1>
+  </div>
+  <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1596464716127-f2a82984de30')">
+    <h1>Custom Jersey Tim</h1>
+  </div>
 </section>
 
 <!-- TOKO -->
 <section id="toko">
-  <h2>Kategori Produk</h2>
-  <div class="category">
-    <span>Sport Pria</span>
-    <span>Sport Wanita</span>
-    <span>Sport Anak</span>
-    <span>Aksesoris</span>
-    <span>Produk Custom</span>
-  </div>
+<h2>Produk Unggulan</h2>
 
-  <h2>Produk Unggulan</h2>
+<div class="product-grid">
 
-  <div class="product-grid">
+<div class="product">
+<img src="https://images.unsplash.com/photo-1600180758890-6b94519a8ba6">
+<div>
+<h3>Jersey Pria Pro</h3>
+<p class="price">Rp 250.000</p>
+<a class="btn" href="https://wa.me/6281234567890">Pesan WA</a>
+</div>
+</div>
 
-    <div class="product-card">
-      <div class="img dummy pria"></div>
-      <h3>Jersey Pria Pro</h3>
-      <p class="price">Rp 250.000</p>
-      <a href="https://wa.me/6281234567890?text=Halo%20Djava%20Work,%20saya%20ingin%20order%20Jersey%20Pria%20Pro" class="btn">
-        Pesan via WhatsApp
-      </a>
-    </div>
+<div class="product">
+<img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf">
+<div>
+<h3>Sportwear Wanita</h3>
+<p class="price">Rp 230.000</p>
+<a class="btn" href="https://wa.me/6281234567890">Pesan WA</a>
+</div>
+</div>
 
-    <div class="product-card">
-      <div class="img dummy wanita"></div>
-      <h3>Sportwear Wanita Fit</h3>
-      <p class="price">Rp 230.000</p>
-      <a href="https://wa.me/6281234567890?text=Halo%20Djava%20Work,%20saya%20ingin%20order%20Sportwear%20Wanita" class="btn">
-        Pesan via WhatsApp
-      </a>
-    </div>
+<div class="product">
+<img src="https://images.unsplash.com/photo-1599058917212-d750089bc07a">
+<div>
+<h3>Sport Anak</h3>
+<p class="price">Rp 180.000</p>
+<a class="btn" href="https://wa.me/6281234567890">Pesan WA</a>
+</div>
+</div>
 
-    <div class="product-card">
-      <div class="img dummy anak"></div>
-      <h3>Sport Anak Active</h3>
-      <p class="price">Rp 180.000</p>
-      <a href="https://wa.me/6281234567890?text=Halo%20Djava%20Work,%20saya%20ingin%20order%20Sport%20Anak" class="btn">
-        Pesan via WhatsApp
-      </a>
-    </div>
+<div class="product">
+<img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f">
+<div>
+<h3>Custom Jersey</h3>
+<p class="price">Mulai Rp 199.000</p>
+<a class="btn" href="https://wa.me/6281234567890">Konsultasi</a>
+</div>
+</div>
 
-    <div class="product-card">
-      <div class="img dummy custom"></div>
-      <h3>Custom Jersey</h3>
-      <p class="price">Mulai Rp 199.000</p>
-      <a href="https://wa.me/6281234567890?text=Halo%20Djava%20Work,%20saya%20ingin%20custom%20jersey" class="btn">
-        Konsultasi
-      </a>
-    </div>
-
-  </div>
+</div>
 </section>
 
 <!-- TENTANG -->
-<section id="tentang" class="alt">
-  <h2>Tentang Djava Work</h2>
-  <p>
-    Djava Work adalah penyedia apparel olahraga berkualitas
-    yang fokus pada kenyamanan, kekuatan bahan, dan desain modern.
-    Kami melayani produk ready dan custom sesuai kebutuhan Anda.
-  </p>
+<section id="tentang" class="about">
+<h2>Tentang Djava Work</h2>
+<p>
+Djava Work adalah brand apparel olahraga lokal  
+fokus pada kualitas bahan, desain modern,  
+dan layanan custom jersey untuk individu maupun tim.
+</p>
 </section>
 
 <!-- KONTAK -->
 <section id="kontak">
-  <h2>Konsultasi & Order</h2>
-  <p>Hubungi admin kami langsung via WhatsApp</p>
-  <a href="https://wa.me/6281234567890" class="btn btn-big">
-    Chat Sekarang
-  </a>
+<h2>Kontak & Order</h2>
+<p>Hubungi admin kami langsung via WhatsApp</p><br>
+<a class="btn" href="https://wa.me/6281234567890">Chat Sekarang</a>
 </section>
 
-<!-- FOOTER -->
 <footer>
-  © 2026 Djava Work. All rights reserved.
+© 2026 Djava Work. All rights reserved.
 </footer>
+
+<script>
+let i=0;
+setInterval(()=>{
+  const slides=document.querySelectorAll('.slide');
+  slides.forEach(s=>s.classList.remove('active'));
+  i=(i+1)%slides.length;
+  slides[i].classList.add('active');
+},3500);
+</script>
 
 </body>
 </html>
