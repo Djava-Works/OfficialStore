@@ -1,272 +1,102 @@
 <!DOCTYPE html>
-<html dir="ltr" lang="id-ID">
-
+<html lang="id">
 <head>
-  <title>Djava Works - Beranda</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-  <meta name="author" content="Djava Works" />
-  <!-- Pastikan folder assets ada di samping file ini -->
-  <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
-  <link rel="preconnect" href="https://fonts.gstatic.com/">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-    rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Allura&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/plugins/swiper.min.css" type="text/css" />
-  <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
-  <link rel="stylesheet" href="assets/css/custom.css" type="text/css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Djava Work — Sportwear & Custom Apparel</title>
+  <link rel="stylesheet" href="assets/css/style.css"/>
 </head>
+<body>
 
-<body class="gradient-bg">
-  <!-- SVG Symbols (Dipanggil dari assets) -->
-  <svg class="d-none">
-    <!-- ... (Simpan kode SVG asli yang kamu kirim di sini agar ikon tetap muncul) ... -->
-    <!-- Gunakan kode lengkap SVG dari file aslimu agar tidak error -->
-    <symbol id="icon_nav" viewBox="0 0 25 18">
-      <rect width="25" height="2" />
-      <rect y="8" width="20" height="2" />
-      <rect y="16" width="25" height="2" />
-    </symbol>
-    <!-- Sisipkan semua symbol lain dari file asli di sini -->
-  </svg>
-
-  <style>
-    #header { padding-top: 8px; padding-bottom: 8px; }
-    .logo__image { max-width: 220px; }
-    
-    /* Style tambahan agar card terlihat bisa diklik */
-    .product-card { cursor: pointer; transition: transform 0.2s; }
-    .product-card:hover { transform: translateY(-5px); }
-  </style>
-
-  <!-- HEADER MOBILE -->
-  <div class="header-mobile header_sticky">
-    <div class="container d-flex align-items-center h-100">
-      <a class="mobile-nav-activator d-block position-relative" href="#">
-        <svg class="nav-icon" width="25" height="18" viewBox="0 0 25 18"><use href="#icon_nav"/></svg>
-        <button class="btn-close-lg position-absolute top-0 start-0 w-100"></button>
-      </a>
-      <div class="logo">
-        <a href="index.html">
-          <img src="assets/images/logo.png" alt="Djava Works" class="logo__image d-block" />
-        </a>
-      </div>
-      <a href="shop.html" class="header-tools__item header-tools__cart js-open-aside">
-        <svg class="d-block" width="20" height="20" viewBox="0 0 20 20"><use href="#icon_cart"/></svg>
-      </a>
-    </div>
-
-    <nav class="header-mobile__navigation navigation d-flex flex-column w-100 position-absolute top-100 bg-body overflow-auto">
-      <div class="container">
-        <ul class="navigation__list list-unstyled position-relative">
-          <li class="navigation__item"><a href="index.html" class="navigation__link">Beranda</a></li>
-          <li class="navigation__item"><a href="shop.html" class="navigation__link">Toko</a></li>
-          <li class="navigation__item"><a href="contact.html" class="navigation__link">Kontak</a></li>
-        </ul>
-      </div>
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="container nav-wrap">
+    <a class="brand" href="index.html">
+      <img src="assets/images/logo.png" alt="Djava Work"/>
+    </a>
+    <nav>
+      <a href="index.html">Beranda</a>
+      <a href="shop.html">Toko</a>
+      <a href="about.html">Tentang Kami</a>
+      <a href="contact.html">Kontak</a>
+      <a class="btn-wa" href="https://wa.me/628123456789" target="_blank">WhatsApp</a>
     </nav>
   </div>
+</header>
 
-  <!-- HEADER DESKTOP -->
-  <header id="header" class="header header-fullwidth header-transparent-bg">
-    <div class="container">
-      <div class="header-desk header-desk_type_1">
-        <div class="logo">
-          <a href="index.html">
-            <img src="assets/images/logo.png" alt="Djava Works" class="logo__image d-block" />
-          </a>
-        </div>
-        <nav class="navigation">
-          <ul class="navigation__list list-unstyled d-flex">
-            <li class="navigation__item"><a href="index.html" class="navigation__link active">Beranda</a></li>
-            <li class="navigation__item"><a href="shop.html" class="navigation__link">Toko</a></li>
-            <li class="navigation__item"><a href="contact.html" class="navigation__link">Kontak</a></li>
-          </ul>
-        </nav>
-        <div class="header-tools d-flex align-items-center">
-          <div class="header-tools__item hover-container">
-            <div class="js-hover__open position-relative">
-              <a class="js-search-popup search-field__actor" href="#">
-                <svg class="d-block" width="20" height="20"><use href="#icon_search"/></svg>
-              </a>
-            </div>
-          </div>
-          <a href="shop.html" class="header-tools__item header-tools__cart">
-            <svg class="d-block" width="20" height="20"><use href="#icon_cart"/></svg>
-          </a>
-        </div>
+<!-- HERO SLIDER (simple) -->
+<section class="hero">
+  <div class="hero-slide" style="background-image:url('assets/images/hero-pria.jpg')">
+    <div class="hero-content">
+      <h1>Baju Sport Pria</h1>
+      <p>Nyaman • Kuat • Modern</p>
+      <a href="shop.html" class="btn">Lihat Toko</a>
+    </div>
+  </div>
+</section>
+
+<!-- KATEGORI -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Kategori Produk</h2>
+    <div class="grid-5">
+      <a class="cat-card" href="shop.html"><span>Sport Pria</span></a>
+      <a class="cat-card" href="shop.html"><span>Sport Wanita</span></a>
+      <a class="cat-card" href="shop.html"><span>Sport Anak</span></a>
+      <a class="cat-card" href="shop.html"><span>Aksesoris</span></a>
+      <a class="cat-card" href="shop.html"><span>Produk Custom</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUK UNGGULAN -->
+<section class="section soft">
+  <div class="container">
+    <h2 class="section-title">Produk Unggulan</h2>
+    <div class="grid-4">
+      <div class="product-card">
+        <img src="assets/images/pria-1.jpg" alt="">
+        <h3>Jersey Pria Pro</h3>
+        <p class="price">Rp 250.000</p>
+        <a class="btn-outline" href="product-detail.html">Lihat Detail</a>
+      </div>
+      <div class="product-card">
+        <img src="assets/images/wanita-1.jpg" alt="">
+        <h3>Sportwear Wanita Fit</h3>
+        <p class="price">Rp 230.000</p>
+        <a class="btn-outline" href="product-detail.html">Lihat Detail</a>
+      </div>
+      <div class="product-card">
+        <img src="assets/images/anak-1.jpg" alt="">
+        <h3>Sport Anak Active</h3>
+        <p class="price">Rp 180.000</p>
+        <a class="btn-outline" href="product-detail.html">Lihat Detail</a>
+      </div>
+      <div class="product-card">
+        <img src="assets/images/custom-1.jpg" alt="">
+        <h3>Custom Jersey</h3>
+        <p class="price">Mulai Rp 199.000</p>
+        <a class="btn-outline" href="product-detail.html">Lihat Detail</a>
       </div>
     </div>
-  </header>
+  </div>
+</section>
 
-  <main>
-    <!-- SLIDER -->
-    <section class="swiper-container js-swiper-slider slideshow slideshow_small slideshow_split" data-settings='{"autoplay": {"delay": 5000}, "slidesPerView": 1, "effect": "fade", "loop": true}'>
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <div class="slide-split h-100 d-block d-md-flex overflow-hidden">
-            <div class="slide-split_text position-relative d-flex align-items-center" style="background-color: #f5e6e0;">
-              <div class="slideshow-text container p-3 p-xl-5">
-                <h2 class="text-uppercase section-title fw-normal mb-3">KOLEKSI <br /><strong>OLAHRAGA</strong></h2>
-                <p class="mb-0">Temukan perlengkapan olahraga terbaik untuk kenyamanan dan performa maksimalmu.</p>
-              </div>
-            </div>
-            <div class="slide-split_media position-relative">
-              <div class="slideshow-bg" style="background-color: #f5e6e0;">
-                <img loading="lazy" src="assets/images/home/demo3/slideshow-character1.png" width="630" height="450" alt="Banner Olahraga" class="slideshow-bg__img object-fit-cover" />
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Tambah slide lainnya sesuai kebutuhan -->
-      </div>
-    </section>
+<!-- CTA -->
+<section class="cta">
+  <div class="container cta-wrap">
+    <h2>Konsultasi & Order via WhatsApp</h2>
+    <a class="btn" href="https://wa.me/628123456789" target="_blank">Chat Sekarang</a>
+  </div>
+</section>
 
-    <!-- KATEGORI -->
-    <section class="category-carousel container">
-      <h2 class="section-title text-center mb-3 pb-xl-2 mb-xl-4">Mungkin Anda Suka</h2>
-      <div class="position-relative">
-        <div class="swiper-container js-swiper-slider" data-settings='{"autoplay": {"delay": 5000}, "slidesPerView": 8, "slidesPerGroup": 1, "effect": "none", "loop": true}'>
-          <div class="swiper-wrapper">
-            <!-- Items Kategori -->
-            <div class="swiper-slide">
-              <div class="text-center">
-                 <!-- Klik gambar category bisa langsung ke halaman toko dengan filter -->
-                 <a href="shop.html" class="d-block mb-3"><img loading="lazy" class="w-100 h-auto" src="assets/images/home/demo3/category_1.png" width="124" height="124" alt="" /></a>
-                 <h6 class="mb-0">Pakaian Pria</h6>
-              </div>
-            </div>
-            <!-- Tambah kategori lainnya -->
-          </div>
-        </div>
-      </div>
-    </section>
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <p>© 2026 Djava Work. All rights reserved.</p>
+  </div>
+</footer>
 
-    <!-- PRODUK UNGGULAN (GRID) -->
-    <section class="products-grid container">
-      <h2 class="section-title text-center mb-3 pb-xl-3 mb-xl-4">Produk Unggulan</h2>
-      <div class="row" id="home-products">
-        <!-- PRODUK 1 -->
-        <div class="col-6 col-md-4 col-lg-3">
-          <div class="product-card product-card_style3 mb-3 mb-md-4 mb-xxl-5" onclick="window.location.href='detail.html'">
-            <div class="pc__img-wrapper">
-              <!-- Klik gambar masuk ke detail -->
-              <a href="detail.html">
-                <img loading="lazy" src="assets/images/home/demo3/product-4.jpg" width="330" height="400" alt="Jaket Sport" class="pc__img">
-              </a>
-            </div>
-            <div class="pc__info position-relative">
-              <h6 class="pc__title"><a href="detail.html">Jaket Ringan Olahraga</a></h6>
-              <div class="product-card__price d-flex align-items-center">
-                <span class="money price text-secondary">Rp 450.000</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- PRODUK 2 -->
-        <div class="col-6 col-md-4 col-lg-3">
-          <div class="product-card product-card_style3 mb-3 mb-md-4 mb-xxl-5" onclick="window.location.href='detail.html'">
-            <div class="pc__img-wrapper">
-              <a href="detail.html">
-                <img loading="lazy" src="assets/images/home/demo3/product-5.jpg" width="330" height="400" alt="Baju Lari" class="pc__img">
-              </a>
-            </div>
-            <div class="pc__info position-relative">
-              <h6 class="pc__title"><a href="detail.html">Kaos Lari Dri-Fit</a></h6>
-              <div class="product-card__price d-flex align-items-center">
-                <span class="money price text-secondary">Rp 180.000</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- PRODUK 3 -->
-        <div class="col-6 col-md-4 col-lg-3">
-          <div class="product-card product-card_style3 mb-3 mb-md-4 mb-xxl-5" onclick="window.location.href='detail.html'">
-            <div class="pc__img-wrapper">
-              <a href="detail.html">
-                <img loading="lazy" src="assets/images/home/demo3/product-6.jpg" width="330" height="400" alt="Celana Training" class="pc__img">
-              </a>
-            </div>
-            <div class="pc__info position-relative">
-              <h6 class="pc__title"><a href="detail.html">Celana Training Pro</a></h6>
-              <div class="product-card__price d-flex align-items-center">
-                <span class="money price text-secondary">Rp 250.000</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- PRODUK 4 -->
-        <div class="col-6 col-md-4 col-lg-3">
-          <div class="product-card product-card_style3 mb-3 mb-md-4 mb-xxl-5" onclick="window.location.href='detail.html'">
-            <div class="pc__img-wrapper">
-              <a href="detail.html">
-                <img loading="lazy" src="assets/images/home/demo3/product-7.jpg" width="330" height="400" alt="Sepatu Lari" class="pc__img">
-              </a>
-            </div>
-            <div class="pc__info position-relative">
-              <h6 class="pc__title"><a href="detail.html">Sepatu Lari Ultra</a></h6>
-              <div class="product-card__price d-flex align-items-center">
-                <span class="money price text-secondary">Rp 750.000</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="text-center mt-2">
-        <a class="btn-link btn-link_lg default-underline text-uppercase fw-medium" href="shop.html">Lihat Semua Produk</a>
-      </div>
-    </section>
-
-  </main>
-
-  <hr class="mt-5 text-secondary" />
-  
-  <!-- FOOTER -->
-  <footer class="footer footer_type_2">
-    <div class="footer-middle container">
-      <div class="row row-cols-lg-5 row-cols-2">
-        <div class="footer-column footer-store-info col-12 mb-4 mb-lg-0">
-          <div class="logo">
-            <a href="index.html">
-              <img src="assets/images/logo.png" alt="Djava Works" class="logo__image d-block" />
-            </a>
-          </div>
-          <p class="footer-address">Jl. Olahraga No. 12, Jakarta Selatan, Indonesia</p>
-          <p class="m-0"><strong class="fw-medium">halo@javaworks.com</strong></p>
-          <p><strong class="fw-medium">+62 812 3456 789</strong></p>
-        </div>
-        <div class="footer-column footer-menu mb-4 mb-lg-0">
-          <h6 class="sub-menu__title text-uppercase">Perusahaan</h6>
-          <ul class="sub-menu__list list-unstyled">
-            <li class="sub-menu__item"><a href="index.html" class="menu-link menu-link_us-s">Tentang Kami</a></li>
-            <li class="sub-menu__item"><a href="contact.html" class="menu-link menu-link_us-s">Hubungi Kami</a></li>
-          </ul>
-        </div>
-        <div class="footer-column footer-menu mb-4 mb-lg-0">
-          <h6 class="sub-menu__title text-uppercase">Belanja</h6>
-          <ul class="sub-menu__list list-unstyled">
-            <li class="sub-menu__item"><a href="shop.html" class="menu-link menu-link_us-s">Produk Pria</a></li>
-            <li class="sub-menu__item"><a href="shop.html" class="menu-link menu-link_us-s">Produk Wanita</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <div class="container d-md-flex align-items-center">
-        <span class="footer-copyright me-auto">©2024 Djava Works. All Rights Reserved.</span>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Scripts -->
-  <script src="assets/js/plugins/jquery.min.js"></script>
-  <script src="assets/js/plugins/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/plugins/swiper.min.js"></script>
-  <script src="assets/js/theme.js"></script>
+<script src="assets/js/main.js"></script>
 </body>
 </html>
