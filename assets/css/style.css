@@ -1,0 +1,158 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: #f5f5f5;
+  color: #333;
+}
+
+/* HEADER */
+header {
+  background: #111;
+  color: #fff;
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header img {
+  height: 40px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 500;
+}
+
+nav a:hover {
+  color: #ff9800;
+}
+
+/* SLIDER */
+.slider {
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+}
+
+.slider img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+}
+
+/* SECTION */
+.section {
+  padding: 40px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* CATEGORY */
+.categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap: 20px;
+}
+
+.category {
+  background: #fff;
+  padding: 20px;
+  text-align: center;
+  border-radius: 6px;
+}
+
+/* PRODUCT */
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+  gap: 20px;
+}
+
+.product {
+  background: #fff;
+  padding: 15px;
+  border-radius: 6px;
+}
+
+.product img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.product h3 {
+  margin: 10px 0;
+}
+
+.product a {
+  display: block;
+  margin-top: 10px;
+  background: #111;
+  color: #fff;
+  text-align: center;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.product a:hover {
+  background: #ff9800;
+}
+
+/* DETAIL */
+.detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.detail img {
+  width: 100%;
+  border-radius: 6px;
+}
+
+.thumb {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.thumb img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid #ddd;
+}
+
+.thumb img:hover {
+  border-color: #ff9800;
+}
+
+/* FOOTER */
+footer {
+  background: #111;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+/* MOBILE */
+@media (max-width:768px) {
+  .detail {
+    grid-template-columns: 1fr;
+  }
+  header {
+    flex-direction: column;
+  }
+}
