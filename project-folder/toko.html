@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toko - Djava Works</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Header (Sama persis) -->
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <a href="index.html" class="logo">
+                    <img src="https://placehold.co/200x50/0f172a/FFF?text=Djava+Works" alt="Logo Djava Works">
+                </a>
+                <div class="hamburger"><i class="fas fa-bars"></i></div>
+                <nav>
+                    <ul class="nav-menu">
+                        <li><a href="index.html" class="nav-link">Beranda</a></li>
+                        <li><a href="toko.html" class="nav-link active">Toko</a></li>
+                        <li><a href="tentang.html" class="nav-link">Tentang Kami</a></li>
+                        <li><a href="kontak.html" class="nav-link">Kontak</a></li>
+                        <li><a href="https://wa.me/6281234567890" target="_blank" class="btn-wa-header"><i class="fab fa-whatsapp"></i> Chat WA</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container" style="padding-top: 40px; padding-bottom: 40px;">
+        <div class="page-layout">
+            <!-- Sidebar Kategori -->
+            <aside class="sidebar">
+                <h3>Kategori Produk</h3>
+                <ul>
+                    <li><a href="#">Baju Sport Pria</a></li>
+                    <li><a href="#">Baju Sport Wanita</a></li>
+                    <li><a href="#">Baju Sport Anak</a></li>
+                    <li><a href="#">Aksesoris</a></li>
+                    <li><a href="#">Produk Custom</a></li>
+                </ul>
+            </aside>
+
+            <!-- Grid Produk -->
+            <section class="shop-content">
+                <h2 style="margin-bottom: 30px; font-size: 1.8rem;">Semua Produk</h2>
+                
+                <div class="product-grid">
+                    <!-- Loop Produk (Contoh 8 Produk) -->
+                    <article class="product-card">
+                        <img src="https://picsum.photos/seed/pria1/400/400" alt="Produk" class="product-img">
+                        <div class="product-info">
+                            <span class="product-category">Pria</span>
+                            <h3 class="product-title">Jersey Pro Runner</h3>
+                            <p class="product-price">Rp 250.000</p>
+                            <a href="detail-produk.html" class="btn btn-primary product-action">Beli Sekarang</a>
+                        </div>
+                    </article>
+                    <article class="product-card">
+                        <img src="https://picsum.photos/seed/wanita1/400/400" alt="Produk" class="product-img">
+                        <div class="product-info">
+                            <span class="product-category">Wanita</span>
+                            <h3 class="product-title">Legging Yoga Active</h3>
+                            <p class="product-price">Rp 185.000</p>
+                            <a href="detail-produk.html" class="btn btn-primary product-action">Beli Sekarang</a>
+                        </div>
+                    </article>
+                    <article class="product-card">
+                        <img src="https://picsum.photos/seed/anak1/400/400" alt="Produk" class="product-img">
+                        <div class="product-info">
+                            <span class="product-category">Anak</span>
+                            <h3 class="product-title">Setelan Anak Junior</h3>
+                            <p class="product-price">Rp 120.000</p>
+                            <a href="detail-produk.html" class="btn btn-primary product-action">Beli Sekarang</a>
+                        </div>
+                    </article>
+                    <article class="product-card">
+                        <img src="https://picsum.photos/seed/aksesoris1/400/400" alt="Produk" class="product-img">
+                        <div class="product-info">
+                            <span class="product-category">Aksesoris</span>
+                            <h3 class="product-title">Sport Cap Djava</h3>
+                            <p class="product-price">Rp 75.000</p>
+                            <a href="detail-produk.html" class="btn btn-primary product-action">Beli Sekarang</a>
+                        </div>
+                    </article>
+                    <article class="product-card">
+                        <img src="https://picsum.photos/seed/custom1/400/400" alt="Produk" class="product-img">
+                        <div class="product-info">
+                            <span class="product-category">Custom</span>
+                            <h3 class="product-title">Jersey Custom Tim</h3>
+                            <p class="product-price">Rp 250.000</p>
+                            <a href="detail-produk.html" class="btn btn-primary product-action">Beli Sekarang</a>
+                        </div>
+                    </article>
+                    <article class="product-card">
+                        <img src="https://picsum.photos/seed/pria2/400/400" alt="Produk" class="product-img">
+                        <div class="product-info">
+                            <span class="product-category">Pria</span>
+                            <h3 class="product-title">Celana Training Jogger</h3>
+                            <p class="product-price">Rp 150.000</p>
+                            <a href="detail-produk.html" class="btn btn-primary product-action">Beli Sekarang</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer (Sama persis seperti index) -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="https://placehold.co/200x50/FFF/333?text=Djava+Works" alt="Logo" class="footer-logo">
+                    <p>Jl. Jendral Sudirman No. 123, Jakarta Selatan, Indonesia.</p>
+                    <p>Email: support@djavaworks.com</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col"><h4>Company</h4><ul><li><a href="tentang.html">Tentang Kami</a></li><li><a href="kontak.html">Kontak</a></li></ul></div>
+                <div class="footer-col"><h4>Shop</h4><ul><li><a href="toko.html">Pria</a></li><li><a href="toko.html">Wanita</a></li></ul></div>
+                <div class="footer-col"><h4>Help</h4><ul><li><a href="#">Customer Service</a></li><li><a href="#">Privacy</a></li></ul></div>
+                <div class="footer-col"><h4>Categories</h4><ul><li><a href="toko.html">Baju Sport</a></li><li><a href="toko.html">Aksesoris</a></li></ul></div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2026 Djava Works.</p> <a href="#">Privacy</a></div>
+        </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
