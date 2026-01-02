@@ -13,22 +13,43 @@
     <header>
         <div class="container">
             <div class="header-top">
+                <!-- LOGO (Tetap Muncul di Desktop & HP) -->
                 <a href="index.html" class="logo">
+                    <!-- Gunakan logo kecil di HP via CSS nanti -->
                     <img src="https://placehold.co/200x50/0f172a/FFF?text=Djava+Works" alt="Logo Djava Works">
                 </a>
-                <div class="hamburger"><i class="fas fa-bars"></i></div>
-                <nav>
+                
+                <!-- DESKTOP NAV (Menu Teks - Hanya di Desktop) -->
+                <nav class="desktop-nav">
                     <ul class="nav-menu">
-                        <li><a href="index.html" class="nav-link">Beranda</a></li>
+                        <li><a href="index.html" class="nav-link active">Beranda</a></li>
                         <li><a href="toko.html" class="nav-link">Toko</a></li>
                         <li><a href="tentang.html" class="nav-link">Tentang Kami</a></li>
-                        <li><a href="kontak.html" class="nav-link active">Kontak</a></li>
+                        <li><a href="kontak.html" class="nav-link">Kontak</a></li>
                         <li><a href="https://wa.me/6281234567890" target="_blank" class="btn-wa-header"><i class="fab fa-whatsapp"></i> Chat WA</a></li>
                     </ul>
                 </nav>
+
+                <!-- MOBILE HEADER ICONS (Hanya di HP) -->
+                <div class="mobile-header-icons">
+                    <a href="toko.html" title="Cari Produk">
+                        <i class="fas fa-search"></i>
+                    </a>
+                    <a href="#" title="Keranjang Belanja" class="cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <!-- Badge notifikasi (opsional) -->
+                        <span class="badge">3</span>
+                    </a>
+                </div>
+
+                <!-- Hamburger (Sembunyikan di HP karena sudah ada Menu Bawah) -->
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
             </div>
         </div>
     </header>
+
 
     <main class="container" style="padding-top: 40px; padding-bottom: 40px;">
         <div class="content-box">
